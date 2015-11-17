@@ -1,0 +1,69 @@
+body {
+	color : black;
+	background-color : white;
+	background-image : url(./../image/lego.jpg);
+}
+
+h1 {
+	color : red;
+	font-family : Snap ITC;
+	text-align : center;
+}
+
+h2 {
+	
+}
+
+h3 {
+	
+}
+
+.texte {
+	font-size : 14px;
+	color : black;
+	font-family : comic sans ms; 
+	text-align : justify;
+}
+
+img.encadrephoto { 
+	display : block; 
+	border-style : solid;  
+	border-width : 5px;  
+	border-color : #000000;  
+	background-color : #000000;  
+  
+}
+
+#navigation {
+/* Style général de la liste*/
+	text-align : center;
+	list-style : none;
+	margin : 0;
+	padding : 0;
+}
+
+#navigation li { 
+/* style de chaque case */
+	display: inline; /* Met a liste à la verticale */
+	color : #FFFFFF;
+	margin-right : 1px;
+}
+
+#navigation li a { 
+/* On fait en sorte que le lien remplisse toute la case */
+	background : #CE0000;
+	color : #FFFFFF;
+	border : 1px solid #003066;
+	font : 1em "valken", Arial;
+	line-height : 1em;
+	text-align : center;
+	text-decoration : none; /* Supression du soulignement */
+	padding : 4px 20px; /* Aération du menu*/
+}
+
+#navigation li a:hover, #navigation li a:focus, 
+#navigation li a:active { 
+/* Les changements affichés quand on survole avec la souris */
+	background : #6E0000; 
+	text-decoration : underline;
+}
