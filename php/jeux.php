@@ -19,6 +19,7 @@
 	</ul>
 	</nav>
 	<div>
+		<table>
 		<?php
 			//paramètres de connexion à la base de données
 			$Base="info201a";
@@ -36,7 +37,10 @@
 			if(!$retour){
 				echo "Connexion à la base impossible";
 			}
+			$Nom=mysql_query(SELECT `Nom` FROM FC_grp2_Jeux WHERE Nom='Dr maboul';);
+			echo $Nom;
 		?>
+		</table>
 	</div>
 
   </body>
