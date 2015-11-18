@@ -21,18 +21,13 @@
 	<div>
 		<?php
 			//paramètres de connexion à la base de données
-			$Base="FC_grp2_Jeux";
-			$Serveur="http://info.univ-lemans.fr/phpMyAdmin/";
-			$Utilisateur="info201a_User";
+			$Base="info201a";
+			$Serveur="info.univ-lemans.fr/";
+			$Utilisateur="info201a_user";
 			$MotDePasse="com72";
-			echo $Base ."<br/>";
-			echo $Serveur ."<br/>";
-			echo $Utilisateur ."<br/>";
-			echo $MotDePasse ."<br/>";
 
 			//connexion au serveur où se trouve la base de données
 			$LienBase=mysql_connect($Serveur,$Utilisateur,$MotDePasse);
-			echo $LienBase ."<br/>"
 
 			//sélection de la base de données au niveau du serveur
 			$retour=mysql_select_db($Base,$LienBase);
