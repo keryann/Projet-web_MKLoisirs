@@ -14,12 +14,21 @@
 	<nav> <!-- Pour le cas d'une navigation entre page html -->
 	<ul id="navigation"> <!-- Menu principal -->
 		<li><a href="./../index.html" title="Accueil">Accueil</a> </li>
-		<li><a href="./../php/jeux.php" title="Les jeux">Les jeux</a> </li>
+		<li><a href="./../html/jeux.html" title="Les jeux">Les jeux</a> </li>
 		<li><a href="./../html/panier.html" title="Mon panier">Mon Panier</a> </li>
 	</ul>
 	</nav>
-	<p classe="text"> Le panier <p>
+	<div>
+		<?php
+			//paramètres de connexion à la base de données $Base="nom-base";
+				$Serveur="nom-serveur";
+				$Utilisateur="nom-utilisateur";
+				$MotDePasse="pwd";
 
-  </body>
+			//connexion au serveur où se trouve la base de données
+			$LienBase=mysql_connect($Serveur,$Utilisateur,$MotDePasse);
 
-</html>
+			//sélection de la base de données au niveau du serveur
+			$retour=mysql_select_db($Base,$LienBase);
+
+			//affichage d

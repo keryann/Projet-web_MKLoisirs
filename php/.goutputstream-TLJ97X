@@ -6,11 +6,11 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
 
-	<title> Ludothèque du Mans NMKloisirs</title>
+	<title> Ludotheque du Mans MKLoisirs</title>
   </head>
 
   <body>
-	<h1> NMKloisirs </h1>
+	<h1> MKLoisirs </h1>
 	<nav> <!-- Pour le cas d'une navigation entre page html -->
 	<ul id="navigation"> <!-- Menu principal -->
 		<li><a href="./../index.html" title="Accueil">Accueil</a> </li>
@@ -18,8 +18,17 @@
 		<li><a href="./../html/panier.html" title="Mon panier">Mon Panier</a> </li>
 	</ul>
 	</nav>
-	<p classe="text"> Page des jeux <p>
+	<div>
+		<?php
+			//paramètres de connexion à la base de données $Base="nom-base";
+				$Serveur="nom-serveur";
+				$Utilisateur="nom-utilisateur";
+				$MotDePasse="pwd";
 
-  </body>
+			//connexion au serveur où se trouve la base de données
+			$LienBase=mysql_connect($Serveur,$Utilisateur,$MotDePasse);
 
-</html>
+			//sélection de la base de données au niveau du serveur
+			$retour=mysql_select_db($Base,$LienBase);
+
+			//affichage d
