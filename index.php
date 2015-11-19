@@ -67,8 +67,8 @@
 							$Requete="SELECT image FROM FC_grp2_Jeux WHERE ID=" .$i .";";
 							$Reponse=mysql_query($Requete);
 							$image=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-/*
-							echo "<figure>";
+
+							/*echo "<figure>";
 
 							echo '<img src="./image/' .$image[image] .'"alt="' .$name[Nom] .'" width="640" height="310" />';
 							echo "<figcaption>" .$name[Nom] ."</figcaption>";
