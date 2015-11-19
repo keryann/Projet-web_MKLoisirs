@@ -43,7 +43,7 @@
 			$Reponse=mysql_query($Requete);
 			$N=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 			// Boucle pour l'affichage du code
-			for($i=0;$i<=$N['nombre'];$i++) {
+			for($i=1;$i<=$N['nombre'];$i++) {
 				$Requete="SELECT Nom FROM FC_grp2_Jeux WHERE ID=" .$i .";";
 				$Reponse=mysql_query($Requete);
 				$name=mysql_fetch_array($Reponse, MYSQL_ASSOC);
@@ -52,14 +52,23 @@
 				$Reponse=mysql_query($Requete);
 				$age=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
-				echo "<table> <tr> <ul>";
-								
-				echo "<li>" .$name['Nom'] ."</li>";
-				echo "<li>" .$age['Ages'] ."</li>";				
-				
-				echo "<tr>";			
+				$Requete="SELECT TypeJeux FROM FC_grp2_Jeux WHERE ID=" .$i .";";
+				$Reponse=mysql_query($Requete);
+				$type=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
-				echo "</tr>";
+				$Requete="SELECT image FROM FC_grp2_Jeux WHERE ID=" .$i .";";
+				$Reponse=mysql_query($Requete);
+				$image=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+
+				echo "<table> <tr><td> <ul>";
+								
+				echo "<li>" .$name['Nom'] ."</li><br/>";
+				echo "<li>" .$age['Ages'] ."</li><br/>";
+				echo "<li>" .$type['TypeJeux'] ."</li><br/>";
+
+				echo "<td>";
+				echo '<img src="./../image/' .$image['image'] .'" alt="' .$image['image'] .'" />';
+				echo "</td>";
 				echo "</tr></table>";
 
 			}
