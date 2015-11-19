@@ -37,8 +37,40 @@
 			if(!$retour){
 				echo "Connexion à la base impossible";
 			}
-			$Nom=mysql_query(SELECT `Nom` FROM FC_grp2_Jeux WHERE Nom='Dr maboul';);
-			echo $Nom;
+			mysql_set_charset('utf8', $LienBase);
+			// Recherche du Nombre de jeux à afficher
+			$Requete="SELECT COUNT(Nom) AS nombre FROM FC_grp2_Jeux;";
+			$Reponse=mysql_query($Requete);
+			$N=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+			// Boucle pour l'affichage du code
+			for($i=0;$i<=$N['nombre'];$i++) {
+				$Requete="SELECT Nom FROM FC_grp2_Jeux WHERE ID=" .$i .";";
+				$Reponse=mysql_query($Requete);
+				$name=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+				
+				$Requete="SELECT Ages FROM FC_grp2_Jeux WHERE ID=" .$i .";";
+				$Reponse=mysql_query($Requete);
+				$age=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+
+				echo "<table> <tr> <ul>";
+								
+				echo "<li>" .$name['Nom'] ."</li>";
+				echo "<li>" .$age['Ages'] ."</li>";				
+				
+				echo "<tr>";			
+
+				echo "</tr>";
+				echo "</tr></table>";
+
+			}
+			/*
+			echo "<table>"
+			
+			"</table>"
+			$Requete="SELECT Nom FROM FC_grp2_Jeux;";
+			$Reponse=mysql_query($Requete);
+			$data=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+			echo $data['Nom'];*/
 		?>
 		</table>
 	</div>
