@@ -26,6 +26,7 @@
 			<div class="container"> <!-- Section réunissant le conteneur des images -->
 				<div class="c_slider"></div>
 				<div class="slider"> <!-- Partie glissante -->
+					<!-- Selection des images de manière dynamique -->
 					<?php
 						//paramètres de connexion à la base de données
 						$Base="info201a";
