@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-  <head> <!-- -->
+<head> <!-- -->
 
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
@@ -11,7 +8,7 @@
 
   <body>
 	<?php include ("menu.php"); ?>
-	
+
 	<div>
 		<?php
 			//paramètres de connexion à la base de données
@@ -31,7 +28,7 @@
 				echo "Connexion à la base impossible";
 			}
 			mysql_set_charset('utf8', $LienBase);
-			
+
 			// Recherche du Nombre de jeux à afficher
 			$Requete="SELECT COUNT(Nom) AS nombre FROM FC_grp2_Jeux;";
 			$Reponse=mysql_query($Requete);
@@ -42,7 +39,7 @@
 				$Requete="SELECT Nom FROM FC_grp2_Jeux WHERE ID=" .$i .";";
 				$Reponse=mysql_query($Requete);
 				$name=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-				
+
 				$Requete="SELECT Ages FROM FC_grp2_Jeux WHERE ID=" .$i .";";
 				$Reponse=mysql_query($Requete);
 				$age=mysql_fetch_array($Reponse, MYSQL_ASSOC);
@@ -61,12 +58,10 @@
 						</td>
 						<td> <img src='./../image/" .$image['image'] ."' alt='" .$name['Nom'] ."' /> </td>
 					</tr>";
-			
+
 			endfor;
 			echo "</table>";
 		?>
 	</div>
 
   </body>
-
-</html>

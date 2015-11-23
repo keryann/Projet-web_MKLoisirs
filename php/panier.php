@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-  <head> <!-- -->
+<head> <!-- -->
 
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
@@ -11,9 +8,7 @@
 
   <body>
 	<?php include ("menu.php"); ?>
-	
+
 	<p classe="text"> Le panier <p>
 
   </body>
-
-</html>
