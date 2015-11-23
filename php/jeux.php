@@ -10,14 +10,8 @@
   </head>
 
   <body>
-	<h1> MKLoisirs </h1>
-	<nav> <!-- Pour le cas d'une navigation entre page html -->
-	<ul id="navigation"> <!-- Menu principal -->
-		<li><a href="./../index.php" title="Accueil">Accueil</a> </li>
-		<li><a href="./../php/jeux.php" title="Les jeux">Les jeux</a> </li>
-		<li><a href="./../html/panier.html" title="Mon panier">Mon Panier</a> </li>
-	</ul>
-	</nav>
+	<?php include ("menu.php"); ?>
+	
 	<div>
 		<?php
 			//paramètres de connexion à la base de données

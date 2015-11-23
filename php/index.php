@@ -3,21 +3,15 @@
 	<head> <!-- -->
 
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="./css/style.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="./css/StyleSlide.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="./../css/StyleSlide.css" media="all" />
 		
 		<title> Ludotheque du Mans MKLoisirs</title>
 	</head>
 
 	<body>
-		<h1> MKLoisirs </h1>
-		<nav> <!-- Pour le cas d'une navigation entre page html -->
-			<ul id="navigation"> <!-- Menu principal -->
-				<li><a href="index.php" title="Accueil">Accueil</a> </li>
-				<li><a href="./php/jeux.php" title="Les jeux">Les jeux</a> </li>
-				<li><a href="./html/panier.html" title="Mon panier">Mon Panier</a> </li>
-			</ul>
-		</nav>
+		<?php include ("./menu.php"); ?>
+		
 		<p classe="text"> Bonjour, <br> NMKloisirs vous propose de nombreux jeux de
 		qualité que vous pouvez emprunter et/ou acheter sur réservation.  <p>
 	
@@ -62,7 +56,7 @@
 							
 							echo '<figure>';
 							
-							echo '<img src="./image/' .$image[image] .'" alt="' .$name[Nom] .'" width="640" height="310" />';
+							echo '<img src="./../image/' .$image[image] .'" alt="' .$name[Nom] .'" width="640" height="310" />';
 							echo "<figcaption>" .$name[Nom] ."</figcaption>";
 							
 							echo '</figure>';

@@ -42,7 +42,7 @@
 			$Requete="SELECT COUNT(Nom) AS nombre FROM FC_grp2_Jeux;";
 			$Reponse=mysql_query($Requete);
 			$N=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-			echo "<br><table>";
+			echo "<br/><table>";
 			// Boucle pour l'affichage du code
 			for($i=1;$i<=$N['nombre'];$i++) :
 				$Requete="SELECT Nom FROM FC_grp2_Jeux WHERE ID=" .$i .";";
