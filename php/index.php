@@ -10,8 +10,9 @@
 	<body>
 		<?php include ("./menu.php"); ?>
 
-		<p classe="text"> Bonjour, <br> NMKloisirs vous propose de nombreux jeux de
-		qualité que vous pouvez emprunter et/ou acheter sur réservation.  <p>
+		<p class="text"> Bonjour, <br> NMKloisirs vous propose de nombreux jeux de
+		qualité que vous pouvez emprunter et/ou acheter sur réservation. Nous sommes
+		à votre disposition pour toutes les informations qui vous semblent nécessaires <p><br />
 
 		<!-- diapo -->
 		<section id="slideshow">

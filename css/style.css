@@ -27,11 +27,13 @@ th, td {
 	text-align : justify;
 }
 
-p.texte {
+p.text {
 	font-size : 14px;
 	color : black;
 	font-family : comic sans ms;
 	text-align : justify;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 img.encadrephoto {
