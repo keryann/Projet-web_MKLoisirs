@@ -5,7 +5,7 @@ body {
 }
 
 h1 {
-	color : red;
+	color : #A60606;
 	font-family : Snap ITC;
 	text-align : center;
 }
@@ -19,15 +19,15 @@ h3 {
 }
 
 table {
-	width : 100%;
+
 }
 
 th, td {
-	/*padding : 15px;*/
+	padding : 15px;
 	text-align : justify;
 }
 
-.texte {
+p.texte {
 	font-size : 14px;
 	color : black;
 	font-family : comic sans ms;
@@ -83,10 +83,10 @@ img.encadrephoto {
 
 #gauche {
 		float:left;
-    width:20%;
+    width:10%;
 }
 
 #droite {
     /*overflow:auto;*/
-		margin-left: 25%;
+		margin-left: 11%;
 }

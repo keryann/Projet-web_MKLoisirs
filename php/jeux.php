@@ -10,7 +10,19 @@
 	<?php include ("menu.php"); ?>
 
 	<div id="gauche">
-		<img src='./../image/dr_maboul.jpg', alt=""/>
+		<form method="post" action ="jeux.php">
+			<br /><br /><h3>Recherche :</h3><br />
+			Age : <br/>
+			<input type="checkbox" name="age" value="quatre" checked="checked"/> 4 ans et plus<br />
+			<input type="checkbox" name="age" value="huit" checked="checked"/> 8 ans et plus<br/>
+			<input type="checkbox" name="age" value="douze" checked="checked"/> 12 ans et plus<br/><br/>
+
+			Lieu : <br/>
+			<input type="checkbox" name="lieu" value="interieur" checked="checked" /> Intérieur<br/>
+			<input type="checkbox" name="lieu" value="exterieur" checked="checked" /> Extérieur<br/><br />
+
+			<input type="submit" value="Valider" name="valider"/>
+		</form>
 	</div><!--
 
 --><div id="droite">
@@ -56,10 +68,16 @@
 				$Requete="SELECT image FROM FC_grp2_Jeux WHERE ID=" .$i .";";
 				$Reponse=mysql_query($Requete);
 				$image=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+
+				$Requete="SELECT Lieu FROM FC_grp2_Jeux WHERE ID=" .$i .";";
+				$Reponse=mysql_query($Requete);
+				$lieu=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+
 				echo"	<tr>	<td>
 							<ul>	<li>" .$name['Nom'] ."\n" ."</li><br/>
 								<li>" .$age['Ages'] ."\n" ."</li><br/>
-								<li>" .$type['TypeJeux'] ."\n" ."</li> <br/> </ul>
+								<li>" .$type['TypeJeux'] ."\n" ."</li> <br/>
+								<li> Jeux d'" .$lieu['Lieu'] ."\n" ."</li> <br/> </ul>
 						</td>
 						<td> <img src='./../image/" .$image['image'] ."' alt='" .$name['Nom'] ."' /> </td>
 					</tr>";
