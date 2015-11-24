@@ -7,20 +7,22 @@
 </head>
 
 <body>
-	<?php include ("menu.php"); ?>
-
+	<?php include ("menu.php");
+//	$_POST['age']=array(4,8,12);
+	?>
 <!-- Partie recherche de jeux -->
 	<div id="gauche">
 		<form method="post" action ="jeux.php">
 			<br /><br /><h3>Recherche :</h3><br />
 			Age : <br/>
-			<input type="checkbox" name="age" value="quatre" checked="checked"/> 4 ans et plus<br />
-			<input type="checkbox" name="age" value="huit" checked="checked"/> 8 ans et plus<br/>
-			<input type="checkbox" name="age" value="douze" checked="checked"/> 12 ans et plus<br/><br/>
+
+			<input type='checkbox' name='age[]' value='4' checked /> 4 ans et plus<br />
+			<input type='checkbox' name='age[]' value='8' checked /> 8 ans et plus<br/>
+			<input type='checkbox' name='age[]' value='12' checked /> 12 ans et plus<br/><br/>
 
 			Lieu : <br/>
-			<input type="checkbox" name="lieu" value="interieur" checked="checked" /> Intérieur<br/>
-			<input type="checkbox" name="lieu" value="exterieur" checked="checked" /> Extérieur<br/><br />
+			<input type="checkbox" name="lieu[]" value="interieur" checked="checked" /> Intérieur<br/>
+			<input type="checkbox" name="lieu[]" value="exterieur" checked="checked" /> Extérieur<br/><br />
 
 			<input type="submit" value="Valider" name="valider"/>
 		</form>
@@ -32,43 +34,37 @@
 			if($retour) {
 				mysql_set_charset('utf8', $LienBase);
 
-				// Recherche du Nombre de jeux à afficher
-				$Requete="SELECT COUNT(Nom) AS nombre FROM FC_grp2_Jeux;";
+				$t_age=array();
+				$cond_age="0";
+				$sep=",";
+
+				if (isset($_GET["init"])) {
+					$cond_age="4,8,12";
+				}
+
+				if (isset($_POST["age"])) {
+					  $t_age=$_POST["age"];
+						foreach($t_age as $v) {
+							$cond_age=$cond_age .$sep .$v;
+						}
+				}
+
+				$Requete="SELECT * FROM FC_grp2_Jeux WHERE Ages in($cond_age);";
 				$Reponse=mysql_query($Requete);
-				$N=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				echo "<br/><table>";
 				// Boucle pour l'affichage du code
-				for($i=1;$i<=$N['nombre'];$i++) :
-					$Requete="SELECT Nom FROM FC_grp2_Jeux WHERE ID=" .$i .";";
-					$Reponse=mysql_query($Requete);
-					$name=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-
-					$Requete="SELECT Ages FROM FC_grp2_Jeux WHERE ID=" .$i .";";
-					$Reponse=mysql_query($Requete);
-					$age=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-
-					$Requete="SELECT TypeJeux FROM FC_grp2_Jeux WHERE ID=" .$i .";";
-					$Reponse=mysql_query($Requete);
-					$type=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-
-					$Requete="SELECT image FROM FC_grp2_Jeux WHERE ID=" .$i .";";
-					$Reponse=mysql_query($Requete);
-					$image=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-
-					$Requete="SELECT Lieu FROM FC_grp2_Jeux WHERE ID=" .$i .";";
-					$Reponse=mysql_query($Requete);
-					$lieu=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-
+				$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+				while($res!=NULL) {
 					echo"	<tr>	<td>
-								<ul>	<li>" .$name['Nom'] ."\n" ."</li><br/>
-									<li>" .$age['Ages'] ."\n" ."</li><br/>
-									<li>" .$type['TypeJeux'] ."\n" ."</li> <br/>
-									<li> Jeux d'" .$lieu['Lieu'] ."\n" ."</li> <br/> </ul>
+								<ul>	<li>" .$res['Nom'] ."\n" ."</li><br/>
+									<li>" .$res['Ages'] ."\n" ."</li><br/>
+									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
+									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/> </ul>
 									</td>
-									<td> <img src='./../image/" .$image['image'] ."' alt='" .$name['Nom'] ."' /> </td>
+									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Nom'] ."' /> </td>
 					</tr>";
-
-				endfor;
+					$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+				}
 				echo "</table>";
 		}
 		?>
