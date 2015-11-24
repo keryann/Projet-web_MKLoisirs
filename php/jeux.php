@@ -4,18 +4,23 @@
 	<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
 
 	<title> Ludotheque du Mans MKLoisirs</title>
-  </head>
+</head>
 
-  <body>
+<body>
 	<?php include ("menu.php"); ?>
 
-	<div>
+	<div id="gauche">
+		<img src='./../image/dr_maboul.jpg', alt=""/>
+	</div><!--
+
+--><div id="droite">
 		<?php
+			error_reporting(E_ALL ^ E_DEPRECATED);
 			//paramètres de connexion à la base de données
-			$Base="info201a";
-			$Serveur="info.univ-lemans.fr";
-			$Utilisateur="info201a_user";
-			$MotDePasse="com72";
+			$Base="jeux"; //"info201a";
+			$Serveur="localhost";//"info.univ-lemans.fr";
+			$Utilisateur="root";//"info201a_user";
+			$MotDePasse="";//"com72";
 
 			//connexion au serveur où se trouve la base de données
 			$LienBase=mysql_connect($Serveur,$Utilisateur,$MotDePasse);
@@ -64,4 +69,4 @@
 		?>
 	</div>
 
-  </body>
+</body>

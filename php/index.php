@@ -20,11 +20,12 @@
 				<div class="slider"> <!-- Partie glissante -->
 					<!-- Selection des images de manière dynamique -->
 					<?php
+						error_reporting(E_ALL ^ E_DEPRECATED); //Pour utilisation wamp
 						//paramètres de connexion à la base de données
-						$Base="info201a";
-						$Serveur="info.univ-lemans.fr";
-						$Utilisateur="info201a_user";
-						$MotDePasse="com72";
+						$Base="jeux"; //"info201a";
+						$Serveur="localhost";//"info.univ-lemans.fr";
+						$Utilisateur="root";//"info201a_user";
+						$MotDePasse="";//"com72";
 
 						//connexion au serveur où se trouve la base de données
 						$LienBase=mysql_connect($Serveur,$Utilisateur,$MotDePasse);
