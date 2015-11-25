@@ -85,10 +85,10 @@ img.encadrephoto {
 
 #gauche {
 		float:left;
-    width:10%;
+    width:120px;
 }
 
 #droite {
     /*overflow:auto;*/
-		margin-left: 11%;
+		margin-left: 125px;
 }

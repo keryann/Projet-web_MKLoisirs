@@ -7,9 +7,8 @@
 </head>
 
 <body>
-	<?php include ("menu.php");
-//	$_POST['age']=array(4,8,12);
-	?>
+	<?php include ("menu.php");	?>
+	
 <!-- Partie recherche de jeux -->
 	<div id="gauche">
 		<form method="post" action ="jeux.php">
