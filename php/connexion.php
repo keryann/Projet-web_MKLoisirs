@@ -14,7 +14,7 @@
 			Adresse électronique : <input type="email" name="mail" /><br /><br />
 			Mot de passe : <input type="password" name="password" /><br /><br />
 			<input type="submit" value="Valider" name = "valider" />
-			<a href="./../ressources/exo1.html" title="exo1.html"> <br />
+			<a href="./inscription.php" title="exo1.html"> <br />
 			<br />pas encore inscrit ?  </a>
 		<p>
 		<?php
@@ -38,7 +38,7 @@
 
 
 						if (isset($_POST["valider"]) && $UsrBase['Mail']==$mail){
-							
+
 						}
 						else {
 							echo"L'adresse mail et le mot de passe ne correspondent pas";

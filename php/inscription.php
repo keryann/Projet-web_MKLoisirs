@@ -2,11 +2,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
+
 		<title>Inscription MKLoisirs</title>
 	</head>
 	<body>
-		<h1> Inscriptions </h1>
-		<form method="post" action="traiteform.php">
+		<?php include ("./menu.php"); ?>
+		<h2> Inscriptions </h2>
+		<form class="connexion" method="post" action="traiteform.php">
 			Nom : <input name="nom" size="25px"/> <br /> <br />
 			Prénom : <input name="prenom" /><br /><br />
 			Adresse électronique : <input type="email" name="mail" /><br /><br />
