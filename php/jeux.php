@@ -80,7 +80,7 @@
 
 									<input type='submit' value='ajouter au panier' name='panier'/>";
 									if(isset($_POST["panier"])){
-										$Requete="INSERT IN"
+										//$Requete="INSERT IN"
 									}
 
 									echo "</td>
