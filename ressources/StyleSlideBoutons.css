@@ -1,9 +1,62 @@
+/* A mettre dans le html
+<!-- Fl�che de d�placement vers l'image suivante et pr�c�dente -->
+	<span id="sl_play" class="sl_command"></span>
+	<span id="sl_pause" class="sl_command"></span>
+
+	<span id="sl_i1" class="sl_command sl_i"></span>
+	<span id="sl_i2" class="sl_command sl_i"></span>
+	<span id="sl_i3" class="sl_command sl_i"></span>
+	<span id="sl_i4" class="sl_command sl_i"></span>
+
+	<!-- diapo -->
+	<section id="slideshow">
+		<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a> <!-- Bouton Pause -->
+		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a> <!-- Bouton Play -->
+
+		<a class="commands prev commands1" href="#sl_i4" title="Aller � la derni�re slide">&lt;</a>
+		<a class="commands next commands1" href="#sl_i2" title="Aller � la 2�me slide">&gt;</a>
+		<a class="commands prev commands2" href="#sl_i1" title="Aller � la 1�re slide">&lt;</a>
+		<a class="commands next commands2" href="#sl_i3" title="Aller � la 3�me slide">&gt;</a>
+		<a class="commands prev commands3" href="#sl_i2" title="Aller � la 2�me slide">&lt;</a>
+		<a class="commands next commands3" href="#sl_i4" title="Aller � la 4�me slide">&gt;</a>
+		<a class="commands prev commands4" href="#sl_i3" title="Aller � la 3�me slide">&lt;</a>
+		<a class="commands next commands4" href="#sl_i1" title="Aller � la 1�re slide">&gt;</a>
+
+		<div class="container"> <!-- Section r�unissant le conteneur des images -->
+			<div class="c_slider"></div>
+			<div class="slider"> <!-- Partie glissante -->
+				<figure>
+					<img src="chateau_gonflable.jpg" alt="" width="640" height="310" />
+					<figcaption>Chateau gonflable</figcaption>
+
+				</figure><!--
+				--><figure>
+					<img src="licorne.jpg" alt="" width="640" height="310" />
+					<figcaption>Licorne en peluche</figcaption>
+				</figure><!--
+				--><figure>
+					<img src="maboul.jpg" alt="" width="640" height="310" />
+					<figcaption>Dr Maboul</figcaption>
+
+				</figure><!--
+				--><figure>
+					<img src="lego.jpg" alt="" width="640" height="310" />
+					<figcaption>lego</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<span id="timeline"></span> <!-- Barre de d�filement du temps -->
+	</section>
+*/
+
+
 /*
 ** Gestion des boutons play et pause
 */
 
 .play_commands {
-	/* positionnement en haut à droite */ 
+	/* positionnement en haut à droite */
 	position: absolute;
 	top: 25px; right: 25px;
 	z-index: 10;
@@ -20,7 +73,7 @@
 }
 /* on décale play légèrement sur la gauche */
 .play { right: 55px; cursor: default; }
- 
+
 .pause:hover { border:0 none; }
 .play_commands:focus { outline:0; }
 
@@ -35,7 +88,7 @@
 	opacity: 0;
 	filter: alpha(opacity=0);
 }
- 
+
 /* création de l'icône pause avec 2 pseudos éléments */
 .pause:after,
 .pause:before {
@@ -50,21 +103,21 @@
 }
 .pause:after { right:0; }
 .pause:before {	left:0; }
- 
+
 /* création de l'icône play avec des bordures */
 .play {
-	width: 1px; 
-	height: 1px; 
+	width: 1px;
+	height: 1px;
 	/* les transparentes forment la flèche */
 	border-top: 10px solid transparent;
 	border-bottom: 10px solid transparent;
-	border-left: 20px solid #fff; 
-	border-left: 20px solid rgba(255,255,255,0.5); 
+	border-left: 20px solid #fff;
+	border-left: 20px solid rgba(255,255,255,0.5);
 	/* renseignez 1 pour voir l'icône de suite */
 	opacity: 0;
 	filter: alpha(opacity=0);
 }
- 
+
 /* apparition du bouton pause au survole */
 /* apparition des boutons au focus */
 #slideshow:hover .pause,
@@ -85,7 +138,7 @@
 	-webkit-animation-play-state: paused;
 			animation-play-state: paused;
 }
- 
+
 /* redémarrer les animations */
 #sl_play:target ~ #slideshow .slider,
 #sl_play:target ~ #slideshow figure:after,
@@ -95,7 +148,7 @@
 	-webkit-animation-play-state: running;
 			animation-play-state: running;
 }
- 
+
 /* switch entre les boutons */
 .sl_command:target ~ #slideshow .pause 		{ opacity:0; }
 #sl_play:target ~ #slideshow:hover .pause,
@@ -122,10 +175,10 @@
 	border-radius: 50%;
 	box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
- 
+
 #slideshow .prev { left: -48px; }
 #slideshow .next { right: -48px; }
- 
+
 #slideshow .commands { display:none; }
 #slideshow .commands1 {	display: block; }
 
@@ -149,7 +202,7 @@
 .sl_i:target ~ #slideshow .dots_commands li:first-child a:after		{ display:none; }
 /* pour afficher la 2ème pastille (cf. bonux suivant) */
 .sl_i:target ~ #slideshow .dots_commands li:first-child a:before	{ display:block; }
- 
+
 /* lorsque on cible le premier slider */
 /* on cache tous les "précédent" et "suivant" */
 #sl_i1:target ~ #slideshow .commands								{ display: none; }
@@ -159,19 +212,19 @@
 #sl_i1:target ~ #slideshow .c_slider								{ background-position: 0 0, 640px 0, 1280px 0, 1920px 0; }
 /* on place la pastille tout à gauche */
 #sl_i1:target ~ #slideshow .dots_commands li:first-child a:before	{ left:0; }
- 
+
 /* même procédé lorsqu'on cible le second slide */
 #sl_i2:target ~ #slideshow .commands								{ display: none; }
 #sl_i2:target ~ #slideshow .commands2							{ display: block; }
 #sl_i2:target ~ #slideshow .c_slider								{ background-position: -640px 0, 0 0, 640px 0, 1280px 0; }
 #sl_i2:target ~ #slideshow .dots_commands li:first-child a:before	{ left:18px; }
- 
+
 /* puis le 3ème */
 #sl_i3:target ~ #slideshow .commands								{ display: none; }
 #sl_i3:target ~ #slideshow .commands3								{ display: block; }
 #sl_i3:target ~ #slideshow .c_slider								{ background-position: -1280px 0, -640px 0, 0 0, 640px 0; }
 #sl_i3:target ~ #slideshow .dots_commands li:first-child a:before	{ left:36px; }
- 
+
 /* et enfin le 4ème */
 #sl_i4:target ~ #slideshow .commands								{ display: none; }
 #sl_i4:target ~ #slideshow .commands4							{ display: block; }
@@ -199,13 +252,13 @@
 	margin: 0 5px;
 	text-indent: -9999px;
 	background: #fff;
- 
+
 	border-radius: 50%;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.55) inset;
 
 }
 /* quelques styles au focus */
-.dots_commands a:focus { 
+.dots_commands a:focus {
 	outline: none;
 	background: orange;
 }
@@ -231,48 +284,48 @@
 }
 /* on cache "before", on l'utilise uniquement au clic (cf. bonux précédent) */
 .dots_commands li:first-child a:before { display:none; }
- 
+
 /* c'est parti pour l'animation ! */
 @-webkit-keyframes dotser {
 	0%, 100% 	{ opacity: 1; filter: alpha(opacity=100); left: 0; 		}
- 		
+
 	20%			{ opacity: 1; filter: alpha(opacity=100); left: 0;		}
 	22%			{ opacity: 0; filter: alpha(opacity=0); left: 0;		}
 	23%			{ opacity: 0; filter: alpha(opacity=0); left: 18px;	}
 	25%			{ opacity: 1; filter: alpha(opacity=100); left: 18px;	}
- 		
+
 	45%			{ opacity: 1; filter: alpha(opacity=100); left: 18px;	}
 	47%			{ opacity: 0; filter: alpha(opacity=0); left: 18px;	}
 	48%			{ opacity: 0; filter: alpha(opacity=0); left: 36px;	}
 	50%			{ opacity: 1; filter: alpha(opacity=100); left: 36px;	}
- 		
+
 	70%			{ opacity: 1; filter: alpha(opacity=100); left: 36px;	}
 	72%			{ opacity: 0; filter: alpha(opacity=0); left: 36px;	}
 	73%			{ opacity: 0; filter: alpha(opacity=0); left: 54px;	}
 	75%			{ opacity: 1; filter: alpha(opacity=100); left: 54px;	}
- 		
+
 	95%			{ opacity: 1; filter: alpha(opacity=100); left: 54px;	}
 	97%			{ opacity: 0; filter: alpha(opacity=0); left: 54px;	}
 	98%			{ opacity: 0; filter: alpha(opacity=0); left: 0;	}
 }
 @keyframes dotser {
 	0%, 100% 	{ opacity: 1; filter: alpha(opacity=100); left: 0; 		}
- 		
+
 	20%			{ opacity: 1; filter: alpha(opacity=100); left: 0;		}
 	22%			{ opacity: 0; filter: alpha(opacity=0); left: 0;		}
 	23%			{ opacity: 0; filter: alpha(opacity=0); left: 18px;	}
 	25%			{ opacity: 1; filter: alpha(opacity=100); left: 18px;	}
- 		
+
 	45%			{ opacity: 1; filter: alpha(opacity=100); left: 18px;	}
 	47%			{ opacity: 0; filter: alpha(opacity=0); left: 18px;	}
 	48%			{ opacity: 0; filter: alpha(opacity=0); left: 36px;	}
 	50%			{ opacity: 1; filter: alpha(opacity=100); left: 36px;	}
- 		
+
 	70%			{ opacity: 1; filter: alpha(opacity=100); left: 36px;	}
 	72%			{ opacity: 0; filter: alpha(opacity=0); left: 36px;	}
 	73%			{ opacity: 0; filter: alpha(opacity=0); left: 54px;	}
 	75%			{ opacity: 1; filter: alpha(opacity=100); left: 54px;	}
- 		
+
 	95%			{ opacity: 1; filter: alpha(opacity=100); left: 54px;	}
 	97%			{ opacity: 0; filter: alpha(opacity=0); left: 54px;	}
 	98%			{ opacity: 0; filter: alpha(opacity=0); left: 0;	}

@@ -1,63 +1,11 @@
 /*
 ** Le but de ce css est uniquement la mise en page du diaporama
 ** Source : http://www.creativejuiz.fr/blog/tutoriels/css3-creer-slideshow-automatique-controlable-transition
-** Le code a été en grande partie récupéré puis adapté pour notre site web.
-*/
-
-/* A mettre dans le html
-<!-- Flêche de déplacement vers l'image suivante et précédente -->
-	<span id="sl_play" class="sl_command"></span>
-	<span id="sl_pause" class="sl_command"></span>
- 
-	<span id="sl_i1" class="sl_command sl_i"></span>
-	<span id="sl_i2" class="sl_command sl_i"></span>
-	<span id="sl_i3" class="sl_command sl_i"></span>
-	<span id="sl_i4" class="sl_command sl_i"></span>
-	
-	<!-- diapo -->
-	<section id="slideshow">
-		<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a> <!-- Bouton Pause -->
-		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a> <!-- Bouton Play -->
-		
-		<a class="commands prev commands1" href="#sl_i4" title="Aller à la dernière slide">&lt;</a>
-		<a class="commands next commands1" href="#sl_i2" title="Aller à la 2ème slide">&gt;</a>
-		<a class="commands prev commands2" href="#sl_i1" title="Aller à la 1ère slide">&lt;</a>
-		<a class="commands next commands2" href="#sl_i3" title="Aller à la 3ème slide">&gt;</a>
-		<a class="commands prev commands3" href="#sl_i2" title="Aller à la 2ème slide">&lt;</a>
-		<a class="commands next commands3" href="#sl_i4" title="Aller à la 4ème slide">&gt;</a>
-		<a class="commands prev commands4" href="#sl_i3" title="Aller à la 3ème slide">&lt;</a>
-		<a class="commands next commands4" href="#sl_i1" title="Aller à la 1ère slide">&gt;</a>
-		
-		<div class="container"> <!-- Section réunissant le conteneur des images -->
-			<div class="c_slider"></div>
-			<div class="slider"> <!-- Partie glissante -->
-				<figure>
-					<img src="chateau_gonflable.jpg" alt="" width="640" height="310" />
-					<figcaption>Chateau gonflable</figcaption>
-
-				</figure><!--
-				--><figure>
-					<img src="licorne.jpg" alt="" width="640" height="310" />
-					<figcaption>Licorne en peluche</figcaption>
-				</figure><!--
-				--><figure>
-					<img src="maboul.jpg" alt="" width="640" height="310" />
-					<figcaption>Dr Maboul</figcaption>
-
-				</figure><!--
-				--><figure>
-					<img src="lego.jpg" alt="" width="640" height="310" />
-					<figcaption>lego</figcaption>
-				</figure>
-			</div>
-		</div>
-		
-		<span id="timeline"></span> <!-- Barre de défilement du temps -->
-	</section>
+** Le code a ï¿½tï¿½ en grande partie rï¿½cupï¿½rï¿½ puis adaptï¿½ pour notre site web.
 */
 
 /*
-** Positionemnt, dimensonnement, décoration des différents blocs
+** Positionemnt, dimensonnement, dï¿½coration des diffï¿½rents blocs
 */
 
 #slideshow {
@@ -73,10 +21,10 @@
 	border-radius: 2px 2px 2px 2px;
 	box-shadow: 0 0 3px rgba(0,0,0, 0.2);
 }
- 
+
 /* avanced box-shadow
  * tutorial @
- * http://www.creativejuiz.fr/blog/les-tutoriels/ombre-avancees-avec-css3-et-box-shadow 
+ * http://www.creativejuiz.fr/blog/les-tutoriels/ombre-avancees-avec-css3-et-box-shadow
 */
 #slideshow:before,
 #slideshow:after {
@@ -103,15 +51,15 @@
 			transform: rotate(4deg);
 }
 
-/* gestion des dimensions et débordement du conteneur */
+/* gestion des dimensions et dï¿½bordement du conteneur */
 #slideshow .container {
 	position:relative;
 	width: 640px;
 	height: 310px;
 	overflow: hidden;
 }
-	
-/* on prévoit un petit espace gris pour la timeline */
+
+/* on prï¿½voit un petit espace gris pour la timeline */
 #slideshow .container:after {
 	position:absolute;
 	bottom: 0; left:0;
@@ -120,7 +68,7 @@
 	height: 1px;
 	background: #999;
 }
-/* 
+/*
    le conteneur des slides
    en largeur il fait 100% x le nombre de slides
 */
@@ -147,7 +95,7 @@
 	box-shadow: 0 0 65px rgba(0,0,0, 0.5) inset;
 }
 
-/* styles de nos légendes */
+/* styles de nos lï¿½gendes */
 #slideshow figcaption {
 	position:absolute;
 	left:0; right:0; bottom: 5px;
@@ -184,7 +132,7 @@
 	75%, 95%		{ left: -300% }
 }
 
-/* Temps d'animation total, sachant qu'une animation = 1s et que chaque temps d'arrêt fait 7s
+/* Temps d'animation total, sachant qu'une animation = 1s et que chaque temps d'arrï¿½t fait 7s
 ** on a donc 8s par image, or on a quatres images donc 32s
 */
 #slideshow .slider {
@@ -192,7 +140,7 @@
 	-webkit-animation: slider 32s infinite;
 }
 
-/*Style de la ligne de temps située en bas du diapo*/
+/*Style de la ligne de temps situï¿½e en bas du diapo*/
 #timeline {
 	position: absolute;
 	background: #999;
@@ -207,7 +155,7 @@
 			animation: timeliner 32s infinite;
 }
 
-/*On donne a la ligne d'animation les moments auquels elle doit être à son maximum et à son minimum*/
+/*On donne a la ligne d'animation les moments auquels elle doit ï¿½tre ï¿½ son maximum et ï¿½ son minimum*/
 @-webkit-keyframes timeliner {
 	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
 	20%, 45%, 70%, 90%		{ width: 640px;	}
@@ -227,11 +175,9 @@
 	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
 }
 
-/* ajouter à l'élément : */
+/* ajouter ï¿½ l'ï¿½lï¿½ment : */
 #slideshow figcaption {
-	/* ... la propriété animation */
+	/* ... la propriï¿½tï¿½ animation */
 	-webkit-animation: figcaptionner 32s infinite;
 			animation: figcaptionner 32s infinite;
 }
-
-
