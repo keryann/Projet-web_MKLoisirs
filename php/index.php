@@ -10,10 +10,15 @@
 	<body>
 		<?php include ("./menu.php"); ?>
 
-		<p class="text"> Bonjour, <br> NMKloisirs vous propose de nombreux jeux de
+		<p id="presentation"> Bonjour, <br> NMKloisirs vous propose de nombreux jeux de
 		qualité que vous pouvez emprunter et/ou acheter sur réservation. Nous sommes
-		à votre disposition pour toutes les informations qui vous semblent nécessaires <p><br />
+		à votre disposition pour toutes les informations qui vous semblent nécessaires </p><br />
 
+		<p id="horaires"> <b>Nos horaires :</b> <br />
+		10h - 12h <br />
+		14h - 18h</p>
+
+			<h2> Les nouveaux jeux disponibles</h2>
 		<!-- diapo -->
 		<section id="slideshow">
 			<div class="container"> <!-- Section réunissant le conteneur des images -->
