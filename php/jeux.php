@@ -8,7 +8,7 @@
 
 <body>
 	<?php include ("menu.php");	?>
-	
+
 <!-- Partie recherche de jeux -->
 	<div id="gauche">
 		<form method="post" action ="jeux.php">
@@ -32,7 +32,7 @@
 		<?php include("connexionbase.php");
 			if($retour) {
 				mysql_set_charset('utf8', $LienBase);
-
+				/* Récupération de la recherche age*/
 				$t_age=array();
 				$cond_age="0";
 				$sep=",";
@@ -48,7 +48,25 @@
 						}
 				}
 
-				$Requete="SELECT * FROM FC_grp2_Jeux WHERE Ages in($cond_age);";
+				/* Récupération de la recherche lieu*/
+				$t_lieu=array();
+				$cond_lieu="'other'";
+				$sep=",";
+
+				if (isset($_GET["init"])) {
+					$cond_lieu="'interieur', 'exterieur'";
+				}
+
+				if (isset($_POST["lieu"])) {
+					  $t_lieu=$_POST["lieu"];
+						foreach($t_lieu as $v) {
+							$cond_lieu=$cond_lieu .$sep ."'".$v ."'";
+						}
+				}
+
+
+				/*Requete SQL en fonction de la recherche*/
+				$Requete="SELECT * FROM FC_grp2_Jeux WHERE Ages IN($cond_age) AND Lieu IN($cond_lieu);";
 				$Reponse=mysql_query($Requete);
 				echo "<br/><table>";
 				// Boucle pour l'affichage du code
