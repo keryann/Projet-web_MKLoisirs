@@ -8,7 +8,7 @@
 	<body>
 		<?php include ("./menu.php"); ?>
 		<h2> Connexion </h2>
-		<form class="connexion" method="post" action="exo3.php">
+		<form class="connexion" method="post" action="connexion.php">
 
 			<!--A quel heure voulez vous venir chercher votre jeux ? (horaires d'ouverture 10h-12h et 14h-18h) : <input name="heur" /><br /><br />-->
 			Adresse électronique : <input type="email" name="mail" /><br /><br />
@@ -19,7 +19,7 @@
 		<p>
 		<?php
 			if(isset($_POST["valider"])) {
-				if(!empty($_POST["mail"])&&!empty($_POST["password"])&&!empty($_POST["heur"])) {
+				if(!empty($_POST["mail"])&&!empty($_POST["password"])) {
 					$mail = $_POST["mail"];
 					$password = $_POST["password"];
 					//$heure =  $_POST["heur"];
@@ -38,7 +38,7 @@
 
 
 						if (isset($_POST["valider"]) && $UsrBase['Mail']==$mail){
-							$Requete=" INSERT INTO FC_grp2_Panier (Client,Creneau) VALUES (".$mail.",".$heur.");";
+							
 						}
 						else {
 							echo"L'adresse mail et le mot de passe ne correspondent pas";
