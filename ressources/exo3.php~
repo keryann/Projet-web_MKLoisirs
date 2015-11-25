@@ -1,0 +1,67 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> Connexion MKLoisirs</title>
+	</head>
+	
+	<body>
+		<h1> Connexion </h1>
+		<form method="post" action="exo3.php">
+			Adresse électronique : <input name="mail" /><br /><br />
+			Mot de passe : <input type="password" name="password" /><br /><br />
+			<input type="submit" value="Valider" name = "valider" />
+			<a href="./../ressources/exo1.html" title="exo1.html"> <br /> 
+			<br />pas encore inscrit ?  </a>
+		<p>
+		<?php
+				if(isset($_POST["valider"])) {
+					if(!empty($_POST["mail"])&&!empty($_POST["password"])) {
+						$mail = $_POST["mail"];
+						$password = $_POST["password"];
+								echo "Connexion réussie";
+				}
+					else echo "Toutes les cases du formulaire ne sont pas remplies";
+				}
+				
+				
+							//paramètres de connexion à la base de données
+			$Base="info201a";
+			$Serveur="info.univ-lemans.fr";
+			$Utilisateur="info201a_user";
+			$MotDePasse="com72";
+
+			//connexion au serveur où se trouve la base de données
+			$LienBase=mysql_connect($Serveur,$Utilisateur,$MotDePasse);
+
+			//sélection de la base de données au niveau du serveur
+			$retour=mysql_select_db($Base,$LienBase);
+
+			//affichage d’un message d’erreur si la connexion a été refusée
+			if(!$retour){
+				echo "Connexion à la base impossible";
+			}
+			
+			mysql_set_charset('utf8', $LienBase);			
+				$Requete="SELECT Mail FROM FC_grp2_Users WHERE Password=" .$password .";";
+				$Reponse=mysql_query($Requete);
+				echo $Reponse;
+				$name=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+				
+				echo $name['Mail'];
+				
+				/*
+				if ($name['Mail']=$Mail){
+						echo"<p> SA MARCHE";					
+					}
+				*/
+				
+			
+			
+		?>
+	</p>
+
+		</form>	
+	</body>
+</html>
+
