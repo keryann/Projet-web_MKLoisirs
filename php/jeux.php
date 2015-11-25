@@ -1,3 +1,4 @@
+<!-- http://www.lephpfacile.com/cours/17-les-cookies  .$_COOKIE['pseudo'].-->
 <head>
 
 	<meta charset="UTF-8">
@@ -81,6 +82,7 @@
 									<input type='submit' value='ajouter au panier' name='panier'/>";
 									if(isset($_POST["panier"])){
 										//$Requete="INSERT IN"
+										
 									}
 
 									echo "</td>
