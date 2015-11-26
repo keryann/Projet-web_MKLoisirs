@@ -53,5 +53,7 @@
 		?>
 	</p>
 
+		<img src="./../image/cookies.png" />
+
 		</form>
 	</body>
