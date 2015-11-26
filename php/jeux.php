@@ -1,5 +1,5 @@
 <!-- http://www.lephpfacile.com/cours/17-les-cookies  .$_COOKIE['pseudo'].-->
-<head>
+<head> <!-- -->
 
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
@@ -75,7 +75,7 @@
 				while($res!=NULL) {
 					echo"	<tr>	<td>
 								<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
-									<li>" .$res['Ages'] ."\n" ."</li><br/>
+									<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
 

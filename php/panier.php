@@ -4,11 +4,11 @@
 	<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
 
 	<title> Panier MKLoisirs</title>
-  </head>
+</head>
 
   <body>
 	<?php include ("menu.php");?>
-		<div> <?php
+		<div id="games"> <?php
 				$User;
 				include("connexionbase.php");
 				if($retour) {
@@ -26,7 +26,7 @@
 						while($res!=NULL) {
 							echo"	<tr>	<td>
 									<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
-										<li>" .$res['Ages'] ."\n" ."</li><br/>
+										<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 										<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 										<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
 
