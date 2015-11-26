@@ -14,7 +14,7 @@
 				if($retour) {
 					mysql_set_charset('utf8', $LienBase);
 					/*Requete SQL en fonction de la recherche*/
-					$Requete="SELECT * FROM (FC_grp2_Jeux NATURAL JOIN FC_grp2_Paniers) NATURAL JOIN FC_grp2_Users WHERE Mail='keryannbussereau@gmail.com';";
+					$Requete="SELECT * FROM FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque NATURAL JOIN FC_grp2_Paniers NATURAL JOIN FC_grp2_Users WHERE Mail='keryannbussereau@gmail.com';";
 					$Reponse=mysql_query($Requete);
 					$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 					if(!$res) {
@@ -27,9 +27,11 @@
 							$jeu=$res['Jeux'];
 							echo"	<tr>	<td>
 									<ul>	<li>" .$jeu ."\n" ."</li><br/>
-										<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
-										<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
-										<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
+										<li>" .$res['Ages'] ." ans et plus\n" ."</li><br />
+										<li>" .$res['TypeJeux'] ."\n" ."</li> <br />
+										<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br />
+										<li> Il y a " .$res['NbJeuxDispos'] ." jeux disponibles sur les " .$res['NbJeux']
+										." jeux de la ludothèque. </li><br /></ul>
 										<form method='post' action ='panier.php'>
 											<input type='submit' value='supprimer du panier' name='videpanier'/>
 										</form>";
