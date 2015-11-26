@@ -1,3 +1,9 @@
+	<?
+	session_start();
+	?>
+	
+	<!DOCTYPE html>
+<html>
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="./../css/style.css" media="all" />
@@ -18,6 +24,7 @@
 			<br />pas encore inscrit ?  </a>
 		<p>
 		<?php
+			
 			if(isset($_POST["valider"])) {
 				if(!empty($_POST["mail"])&&!empty($_POST["password"])) {
 					$mail = $_POST["mail"];
@@ -38,7 +45,14 @@
 
 
 						if (isset($_POST["valider"]) && $UsrBase['Mail']==$mail){
-
+									$_SESSION["mail"] = $mail;
+									
+									mysql_set_charset('utf8', $LienBase);
+									$Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";
+									$Reponse=mysql_query($Requete);
+									$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+									
+									echo "Bonjour ".$UsrBase['Prenom']." ".$UsrBase['Nom']."<br>";
 						}
 						else {
 							echo"L'adresse mail et le mot de passe ne correspondent pas";
@@ -57,3 +71,4 @@
 
 		</form>
 	</body>
+</html> 

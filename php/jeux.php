@@ -1,3 +1,12 @@
+	<?
+	session_start();
+
+									
+									echo "Bonjour ".$_SESSION["mail"];
+	?>
+
+
+
 <!-- http://www.lephpfacile.com/cours/17-les-cookies  .$_COOKIE['pseudo'].-->
 <head> <!-- -->
 
@@ -73,16 +82,21 @@
 				// Boucle pour l'affichage du code
 				$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				while($res!=NULL) {
+					$jeu=$res['Jeux'];
 					echo"	<tr>	<td>
-								<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
+								<ul>	<li>" .$jeu ."\n" ."</li><br/>
 									<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
-
-									<input type='submit' value='ajouter au panier' name='panier'/>";
-									if(isset($_POST["panier"])){
-										//$Requete="INSERT IN"
-
+									
+									<form method='post' action='jeux.php'> 
+										<input type='submit' value='ajouter au panier' name='insertpanier'/>
+									</form>";
+									
+									if(isset($_POST["insertpanier"])){
+										$Insertion= "INSERT INTO FC_grp2_Panier (Jeux,Mail,Creneau) VALUES ('".$jeu."','".$_SESSION["mail"]."','0');";
+										mysql_query($Insertion);
+										//header("Refresh:0");
 									}
 
 									echo "</td>
@@ -92,6 +106,7 @@
 				}
 				echo "</table>";
 		}
+		echo $Insertion;
 		?>
 	</div>
 
