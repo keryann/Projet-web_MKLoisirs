@@ -74,7 +74,7 @@
 				$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				while($res!=NULL) {
 					echo"	<tr>	<td>
-								<ul>	<li>" .$res['Nom'] ."\n" ."</li><br/>
+								<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
 									<li>" .$res['Ages'] ."\n" ."</li><br/>
 									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
@@ -82,11 +82,11 @@
 									<input type='submit' value='ajouter au panier' name='panier'/>";
 									if(isset($_POST["panier"])){
 										//$Requete="INSERT IN"
-										
+
 									}
 
 									echo "</td>
-									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Nom'] ."' /> </td>
+									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' /> </td>
 					</tr>";
 					$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				}
