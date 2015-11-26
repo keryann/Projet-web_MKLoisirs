@@ -55,6 +55,11 @@ form.connexion {
 	margin-left : 30%;
 }
 
+#connecte {
+	float : right;
+	margin-right : 3%;
+}
+
 /****************************** Menu ********************************/
 
 #navigation {
@@ -95,7 +100,7 @@ form.connexion {
 
 #search {
 	float:left;
-    width:120px;
+  width:120px;
 }
 
 #games {

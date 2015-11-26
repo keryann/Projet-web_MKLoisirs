@@ -1,11 +1,4 @@
-	<?php
-	session_start();
-
-
-									echo "Bonjour ".$_SESSION["mail"];
-	?>
-
-
+<?php session_start(); ?>
 
 <!-- http://www.lephpfacile.com/cours/17-les-cookies  .$_COOKIE['pseudo'].-->
 <head> <!-- -->
@@ -76,28 +69,46 @@
 
 
 				/*Requete SQL en fonction de la recherche*/
-				$Requete="SELECT * FROM FC_grp2_Jeux WHERE Ages IN($cond_age) AND Lieu IN($cond_lieu);";
+				$Requete="SELECT * FROM FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque WHERE Ages IN($cond_age) AND Lieu IN($cond_lieu);";
 				$Reponse=mysql_query($Requete);
 				echo "<br/><table>";
 				// Boucle pour l'affichage du code
 				$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				while($res!=NULL) {
-					$jeu=$res['Jeux'];
+					$id=$res['ID'];
 					echo"	<tr>	<td>
-								<ul>	<li>" .$jeu ."\n" ."</li><br/>
+								<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
 									<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
-									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
+									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/>
+									<li> Il y a " .$res['NbJeuxDispos'] ." jeux disponibles sur les " .$res['NbJeux']
+									." jeux de la ludothèque. </li><br /></ul>
 
 									<form method='post' action='jeux.php?init=1'>
-										<input type='submit' value='ajouter au panier' name='insertpanier'/>
+										<input type='submit' value='ajouter au panier' name='$id'/>
 									</form>";
 
-									if(isset($_POST["insertpanier"])){
-										$Insertion= "INSERT INTO FC_grp2_Paniers (Jeux,Mail,Creneau) VALUES ('".$jeu."','".$_SESSION["mail"]."','0');";
-										mysql_query($Insertion);
-										//header("Refresh:0");
-									} //".$_SESSION["mail"]." (Jeux,Mail,Creneau)
+									if(isset($_POST["$id"])){
+										$compte="SELECT COUNT(*) AS nbre FROM FC_grp2_Paniers WHERE Mail ='" .$_SESSION['mail'] ."';";
+										$rep=mysql_query($compte);
+										$nbre=mysql_fetch_array($rep, MYSQL_ASSOC);
+
+										$present="SELECT ID FROM FC_grp2_Paniers WHERE ID = '" .$id ."';";
+										$pres=mysql_query($present);
+										$pre=mysql_fetch_array($pres, MYSQL_ASSOC);
+
+										if($nbre['nbre']>=3) {
+											echo "Vous avez atteint la limite du nombre de jeux pouvants êtres commandés <br />";
+										}
+										elseif ($pre) {
+											echo "Ce jeu est déjà présent dans votre panier";
+										}
+										else {
+											$Insertion= "INSERT INTO FC_grp2_Paniers (ID,Mail,Creneau)
+																	VALUES ('".$id."','".$_SESSION['mail']."','0');";
+											mysql_query($Insertion);
+										}
+									}
 
 									echo "</td>
 									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' /> </td>

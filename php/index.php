@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <head> <!-- -->
 
 		<meta charset="UTF-8">
@@ -14,7 +16,7 @@
 		qualité que vous pouvez emprunter et/ou acheter sur réservation. Nous sommes
 		à votre disposition pour toutes les informations qui vous semblent nécessaires </p><br />
 
-		<p id="horaires"> <b>Nos horaires :</b> <br />
+		<p id="horaires"> <br /><b>Nos horaires :</b> <br />
 		10h - 12h <br />
 		14h - 18h</p>
 

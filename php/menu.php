@@ -9,3 +9,13 @@
 	</ul>
 	</div>
 </nav>
+
+<div id='connecte'>
+	<?php
+		error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
+		/*$Req="SELECT * FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"] ."';";
+		$connexion=mysql_query($Req);
+		$co=mysql_fetch_array($connexion, MYSQL_ASSOC);*/
+		echo "Vous êtes connectés en tant que :<br/>" .$_SESSION['mail']; //.$co['Nom'] ." " .$co['Prenom'];
+	 ?>
+</div>
