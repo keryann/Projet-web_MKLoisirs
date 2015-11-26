@@ -1,4 +1,5 @@
 <h1> MKLoisirs </h1>
+
 <nav> <!-- Pour le cas d'une navigation entre page html -->
 	<div>
 	<ul id='navigation'> <!-- Menu principal -->
