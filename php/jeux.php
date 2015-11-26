@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<?php include ("menu.php");	?>
+	<?php include ("./menu.php");	?>
 
 <!-- Partie recherche de jeux -->
 	<div id="search">

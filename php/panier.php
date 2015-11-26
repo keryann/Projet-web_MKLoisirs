@@ -7,8 +7,8 @@
 </head>
 
   <body>
-	<?php include ("menu.php");?>
-		<div id="games"> <?php
+	<?php include ("./menu.php");?>
+		<div> <?php
 				$User;
 				include("connexionbase.php");
 				if($retour) {
@@ -16,23 +16,27 @@
 					/*Requete SQL en fonction de la recherche*/
 					$Requete="SELECT * FROM (FC_grp2_Jeux NATURAL JOIN FC_grp2_Paniers) NATURAL JOIN FC_grp2_Users WHERE Mail='keryannbussereau@gmail.com';";
 					$Reponse=mysql_query($Requete);
-					if(!$Reponse) {
-						echo "Le panier est vide";
+					$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+					if(!$res) {
+						echo "<h2>Votre panier est vide </h2>";
 					}
 					else {
 						echo "<br/><table>";
 						// Boucle pour l'affichage du code
-						$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 						while($res!=NULL) {
+							$jeu=$res['Jeux'];
 							echo"	<tr>	<td>
-									<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
+									<ul>	<li>" .$jeu ."\n" ."</li><br/>
 										<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 										<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 										<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
-
-										<input type='submit' value='supprimer du panier' name='videpanier'/>";
+										<form method='post' action ='panier.php'>
+											<input type='submit' value='supprimer du panier' name='videpanier'/>
+										</form>";
 										if(isset($_POST["videpanier"])){
-
+											$Suppression="DELETE FROM FC_grp2_Paniers WHERE Jeux='" .$jeu ."';";
+											mysql_query($Suppression);
+											header("Refresh:0");
 										}
 
 										echo "</td>
