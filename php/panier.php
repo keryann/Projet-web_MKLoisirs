@@ -14,7 +14,7 @@
 				if($retour) {
 					mysql_set_charset('utf8', $LienBase);
 					/*Requete SQL en fonction de la recherche*/
-					$Requete="SELECT * FROM FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque NATURAL JOIN FC_grp2_Paniers NATURAL JOIN FC_grp2_Users WHERE Mail='keryannbussereau@gmail.com';";
+					$Requete="SELECT * FROM FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque NATURAL JOIN FC_grp2_Paniers NATURAL JOIN FC_grp2_Users WHERE '" .$_SESSION["mail"] ."';";
 					$Reponse=mysql_query($Requete);
 					$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 					if(!$res) {

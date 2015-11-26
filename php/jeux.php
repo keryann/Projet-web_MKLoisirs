@@ -1,7 +1,7 @@
-	<?
+	<?php
 	session_start();
 
-									
+
 									echo "Bonjour ".$_SESSION["mail"];
 	?>
 
@@ -88,25 +88,24 @@
 									<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/></ul>
-									
-									<form method='post' action='jeux.php'> 
+
+									<form method='post' action='jeux.php?init=1'>
 										<input type='submit' value='ajouter au panier' name='insertpanier'/>
 									</form>";
-									
+
 									if(isset($_POST["insertpanier"])){
-										$Insertion= "INSERT INTO FC_grp2_Panier (Jeux,Mail,Creneau) VALUES ('".$jeu."','".$_SESSION["mail"]."','0');";
+										$Insertion= "INSERT INTO FC_grp2_Paniers (Jeux,Mail,Creneau) VALUES ('".$jeu."','".$_SESSION["mail"]."','0');";
 										mysql_query($Insertion);
 										//header("Refresh:0");
-									}
+									} //".$_SESSION["mail"]." (Jeux,Mail,Creneau)
 
 									echo "</td>
 									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' /> </td>
-					</tr>";
+									</tr>";
 					$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				}
 				echo "</table>";
 		}
-		echo $Insertion;
 		?>
 	</div>
 
