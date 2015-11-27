@@ -13,13 +13,18 @@
 
 <div>
 	<?php
-        include("./../php/connexionbase.php");
-		error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
-        mysql_set_charset('utf8', $LienBase);
-        $Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";
-        $Reponse=mysql_query($Requete);
-        $UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-        echo "Vous êtes connecté en tant que :<br />".$UsrBase['Prenom']." ".$UsrBase['Nom'];
+		if($_SESSION["mail"] != NULL){
+        	include("./../php/connexionbase.php");
+			error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
+        	mysql_set_charset('utf8', $LienBase);
+        	$Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";
+        	$Reponse=mysql_query($Requete);
+        	$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+        	echo "Vous êtes connecté en tant que :<br />".$UsrBase['Prenom']." ".$UsrBase['Nom'];
+        	}
+        else {
+        	echo "Vous n'êtes pas connecté";
+        }
 
 	 ?>
 </div>

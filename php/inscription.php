@@ -10,7 +10,7 @@
 	<body>
 		<?php include ("./menu.php"); ?>
 		<h2> Inscriptions </h2>
-		<form class="connexion" method="post" action="traiteform.php">
+		<form class="connexion" method="post" action="inscription.php">
 			Nom : <input name="nom" size="25px"/> <br /> <br />
 			Prénom : <input name="prenom" /><br /><br />
 			Adresse électronique : <input type="email" name="mail" /><br /><br />

@@ -10,7 +10,24 @@
 	</head>
 
 	<body>
-		<?php include ("./menu.php"); ?>
+		<?php include ("./menu.php");
+		if($_SESSION["mail"] != NULL):
+			echo "vous êtes deja connecté<br />";
+			
+			echo "<form method='post' action='connexion.php'> 
+			<input type='submit' value='Deconnection' name = 'Deconnection' />
+			<br />
+			</form>";
+			
+			if(isset($_POST["Deconnection"])){
+				unset($_SESSION['mail']);
+				header("Refresh:0");
+			};
+			
+		else:
+		 ?>
+		
+
 		<h2> Connexion </h2>
 		<form class="connexion" method="post" action="connexion.php">
 
@@ -18,12 +35,13 @@
 			Adresse électronique : <input type="email" name="mail" /><br /><br />
 			Mot de passe : <input type="password" name="password" /><br /><br />
 			<input type="submit" value="Valider" name = "valider" />
-			<a href="./inscription.php" title="exo1.html"> <br />
+			<a href="./inscription.php" > <br />
 			<br />pas encore inscrit ?  </a>
 		<p>
 		<?php
 
 			if(isset($_POST["valider"])) {
+			
 				if(!empty($_POST["mail"])&&!empty($_POST["password"])) {
 					$mail = $_POST["mail"];
 					$password = $_POST["password"];
@@ -32,8 +50,7 @@
 					//if( ($heure<10 && $heure>12) || ($heure>18 && $heure<14))
 						//echo "veuillez entrer un horaire correspondant à nos horaires d'ouverture <br/>";
 
-					//include("./../php/connexionbase.php");
-
+					include("./../php/connexionbase.php");
 					if($retour) {
 
 						mysql_set_charset('utf8', $LienBase);
@@ -61,12 +78,10 @@
 			}
 
 
-
+			echo "</p> <img src='./../image/cookies.png' /> </form>";
+			endif;
 		?>
-	</p>
-
-		<img src="./../image/cookies.png" />
-
-		</form>
+		
+		
 	</body>
 </html>
