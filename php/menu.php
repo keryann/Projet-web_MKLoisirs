@@ -11,12 +11,15 @@
 	</div>
 </nav>
 
-<div id='connecte'>
+<div>
 	<?php
+        include("./../php/connexionbase.php");
 		error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
-		/*$Req="SELECT * FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"] ."';";
-		$connexion=mysql_query($Req);
-		$co=mysql_fetch_array($connexion, MYSQL_ASSOC);*/
-		echo "Vous êtes connectés en tant que :<br/>" .$_SESSION['mail']; //.$co['Nom'] ." " .$co['Prenom'];
+        mysql_set_charset('utf8', $LienBase);
+        $Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";
+        $Reponse=mysql_query($Requete);
+        $UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+        echo "Vous êtes connecté en tant que :<br />".$UsrBase['Prenom']." ".$UsrBase['Nom'];
+
 	 ?>
 </div>

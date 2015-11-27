@@ -32,7 +32,7 @@
 					//if( ($heure<10 && $heure>12) || ($heure>18 && $heure<14))
 						//echo "veuillez entrer un horaire correspondant à nos horaires d'ouverture <br/>";
 
-					include("./../php/connexionbase.php");
+					//include("./../php/connexionbase.php");
 
 					if($retour) {
 
