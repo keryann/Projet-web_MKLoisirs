@@ -61,7 +61,7 @@
 							mysql_query($Suppression);
 							header("Refresh:0");
 						}
-						echo"<form method='post' action ='panier.php'>
+						echo"<form method='post' action ='validepanier.php'>
 							<input type='submit' value='valider panier' name='valider'/>
 						</form>";
 
