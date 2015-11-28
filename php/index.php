@@ -13,8 +13,9 @@
 		<?php include ("./menu.php"); ?>
 
 		<p id="presentation"> Bonjour, <br> NMKloisirs vous propose de nombreux jeux de
-		qualité que vous pouvez emprunter et/ou acheter sur réservation. Nous sommes
-		à votre disposition pour toutes les informations qui vous semblent nécessaires </p><br />
+		qualité que vous pouvez emprunter sur réservation. Nous vous proposons des jeux
+		de société, des jeux vidéos, des jeux d'extérieurs et pleins d'autre choses. Nous sommes
+		à votre disposition pour toutes les informations qui vous semblent nécessaires. </p><br />
 
 		<p id="horaires"> <br /><b>Nos horaires :</b> <br />
 		10h - 12h <br />

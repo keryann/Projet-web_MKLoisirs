@@ -26,6 +26,10 @@
 			<input type="checkbox" name="lieu[]" value="interieur" checked="checked" /> Intérieur<br/>
 			<input type="checkbox" name="lieu[]" value="exterieur" checked="checked" /> Extérieur<br/><br />
 
+			Disponible uniquement : <br />
+			<input type="radio" name="dispo" value=">0" /> Oui<br/>
+			<input type="radio" name="dispo" value=">=0" checked="checked" /> non<br/>
+
 			<input type="submit" value="Valider" name="valider"/>
 		</form>
 	</div>
@@ -67,49 +71,64 @@
 						}
 				}
 
+				/* Récupération de la recherche disponiblité*/
+				if (isset($_GET["init"]) || strcmp($_POST["dispo"],"oui") == 1) {
+					$cond_dispo='NbJeuxDispos>=0';
+				}
+				else {
+					$cond_dispo='NbJeuxDispos>0';
+				}
 
 				/*Requete SQL en fonction de la recherche*/
-				$Requete="SELECT * FROM FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque WHERE Ages IN($cond_age) AND Lieu IN($cond_lieu);";
+				$Requete="SELECT * FROM FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque WHERE Ages IN($cond_age) AND Lieu IN($cond_lieu) AND " .$cond_dispo .";";
 				$Reponse=mysql_query($Requete);
 				echo "<br/><table>";
 				// Boucle pour l'affichage du code
 				$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 				while($res!=NULL) {
 					$id=$res['ID'];
+					$dispo=$res['NbJeuxDispos'];
 					echo"	<tr>	<td>
 								<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
 									<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
 									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
 									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/>
-									<li> Il y a " .$res['NbJeuxDispos'] ." jeux disponibles sur les " .$res['NbJeux']
-									." jeux de la ludothèque. </li><br /></ul>
+									<li> Il y a " .$dispo ." jeux disponibles sur les " .$res['NbJeux']
+									." jeux de la ludothèque. </li><br /></ul>";
 
-									<form method='post' action='jeux.php?init=1'>
-										<input type='submit' value='ajouter au panier' name='$id'/>
+									echo "<form method='post' action='jeux.php?init=1'>
+										<input type='submit' value='Ajouter au panier' name='$id'/>
 									</form>";
 
 									if(isset($_POST["$id"])){
-										$compte="SELECT COUNT(*) AS nbre FROM FC_grp2_Paniers WHERE Mail ='" .$_SESSION['mail'] ."';";
-										$rep=mysql_query($compte);
-										$nbre=mysql_fetch_array($rep, MYSQL_ASSOC);
-
-										$present="SELECT ID FROM FC_grp2_Paniers WHERE ID = '" .$id ."';";
-										$pres=mysql_query($present);
-										$pre=mysql_fetch_array($pres, MYSQL_ASSOC);
-
-										if($nbre['nbre']>=3) {
-											echo "Vous avez atteint la limite du nombre de jeux pouvants êtres commandés <br />";
-										}
-										elseif ($pre) {
-											echo "Ce jeu est déjà présent dans votre panier";
+										if(!isset($_SESSION['mail'])) {
+											echo "Vous devez être connecté pour commander un jeu";
 										}
 										else {
-											$Insertion= "INSERT INTO FC_grp2_Paniers (ID,Mail,Creneau)
-																	VALUES ('".$id."','".$_SESSION['mail']."','0');";
-											mysql_query($Insertion);
+											$compte="SELECT COUNT(*) AS nbre FROM FC_grp2_Paniers WHERE Mail ='" .$_SESSION['mail'] ."';";
+											$rep=mysql_query($compte);
+											$nbre=mysql_fetch_array($rep, MYSQL_ASSOC);
+
+											$present="SELECT ID FROM FC_grp2_Paniers WHERE ID = '" .$id ."';";
+											$pres=mysql_query($present);
+											$pre=mysql_fetch_array($pres, MYSQL_ASSOC);
+
+											if($nbre['nbre']>=3) {
+												echo "Vous avez atteint la limite du nombre de jeux pouvants êtres commandés <br />";
+											}
+											elseif($pre) {
+												echo "Ce jeu est déjà présent dans votre panier";
+											}
+											elseif($dispo == 0) {
+												echo "Ce jeu n'est pas disponible";
+											}
+											else {
+												$Insertion= "INSERT INTO FC_grp2_Paniers (ID,Mail,Creneau)
+																		VALUES ('".$id."','".$_SESSION['mail']."','0');";
+												mysql_query($Insertion);
+											}
 										}
 									}
-
 									echo "</td>
 									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' /> </td>
 									</tr>";

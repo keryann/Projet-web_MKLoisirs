@@ -11,22 +11,22 @@
 
 	<body>
 		<?php include ("./menu.php");
-		if($_SESSION["mail"] != NULL):
-			echo "vous êtes deja connecté<br />";
-			
-			echo "<form method='post' action='connexion.php'> 
-			<input type='submit' value='Deconnection' name = 'Deconnection' />
+		if(isset($_SESSION['mail'])):
+			echo "<h2>Vous êtes deja connecté <h2>";
+
+			echo "<form method='post' action='connexion.php'>
+			<input type='submit' value='Déconnexion' name = 'Deconnexion' />
 			<br />
 			</form>";
-			
-			if(isset($_POST["Deconnection"])){
-				unset($_SESSION['mail']);
+
+			if(isset($_POST["Deconnexion"])){
+				session_unset($_SESSION['mail']);
 				header("Refresh:0");
 			};
-			
+
 		else:
 		 ?>
-		
+
 
 		<h2> Connexion </h2>
 		<form class="connexion" method="post" action="connexion.php">
@@ -41,14 +41,10 @@
 		<?php
 
 			if(isset($_POST["valider"])) {
-			
+
 				if(!empty($_POST["mail"])&&!empty($_POST["password"])) {
 					$mail = $_POST["mail"];
 					$password = $_POST["password"];
-					//$heure =  $_POST["heur"];
-
-					//if( ($heure<10 && $heure>12) || ($heure>18 && $heure<14))
-						//echo "veuillez entrer un horaire correspondant à nos horaires d'ouverture <br/>";
 
 					include("./../php/connexionbase.php");
 					if($retour) {
@@ -68,6 +64,7 @@
 									$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
 									echo "Bonjour ".$UsrBase['Prenom']." ".$UsrBase['Nom']."<br>";
+									header("Refresh:2");
 						}
 						else {
 							echo"L'adresse mail et le mot de passe ne correspondent pas";
@@ -81,7 +78,7 @@
 			echo "</p> <img src='./../image/cookies.png' /> </form>";
 			endif;
 		?>
-		
-		
+
+
 	</body>
 </html>

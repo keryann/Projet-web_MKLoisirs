@@ -13,7 +13,7 @@
 		<div> <?php
 				$User;
 				include("connexionbase.php");
-				if($retour) {
+				if($retour && isset($_SESSION['mail'])) {
 					mysql_set_charset('utf8', $LienBase);
 					/*Requete SQL en fonction de la recherche*/
 					$Requete="SELECT * FROM ((FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque) NATURAL JOIN FC_grp2_Paniers)
@@ -62,15 +62,12 @@
 							header("Refresh:0");
 						}
 						echo"<form method='post' action ='validepanier.php'>
-							<input type='submit' value='valider panier' name='valider'/>
-						</form>";
-
-						if(isset($_POST["valider"])){
-							$Ajout="UPDATE FC_grp2_Paniers SET Valide=1 WHERE Mail= '" .$_SESSION["mail"] ."';";
-							mysql_query($Ajout);
-							header("Refresh:0");
-						}
+									<input type='submit' value='valider panier' name='valider'/>
+								</form>";
 					}
-				}?>
+				}
+				else
+					echo "<h2>Vous n'êtes pas connecté</h2>"
+					?>
 			</div>
   </body>

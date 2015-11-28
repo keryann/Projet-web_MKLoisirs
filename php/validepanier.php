@@ -9,14 +9,27 @@
 </head>
 
 <body>
-	<?php include ("./menu.php");?>
+	<?php include ("./menu.php");
+				include("connexionbase.php");
+	echo"<form class='connexion' method='post' action ='validepanier.php'>
+				Entrez l'horaire auquel vous souhaitez venir chercher votre/vos jeux : <input name='horaire'>
+				<input type='submit' value='valider' name='valide'/>
+			</form>";
 
-<?php
-if(isset($_POST["valider"])){
-  $Ajout="UPDATE FC_grp2_Paniers SET Valide=1 WHERE Mail= '" .$_SESSION["mail"] ."';";
-  mysql_query($Ajout);
-  header("Refresh:0");
-}
+	if(isset($_POST["valide"])) {
+		$horaire=$_POST["horaire"];
+		if($horaire>=10 && $horaire<12 || $horaire>14 && $horaire<18) {
+			echo "votre commande a bien été prise en compte";
+			$Ajout="UPDATE FC_grp2_Paniers SET Valide=1, Creneau =$horaire WHERE Mail= '" .$_SESSION["mail"] ."';";
+			mysql_query($Ajout);
+			$Decremente="UPDATE FC_grp2_JeuxLudotheque SET NbJeuxDispos=NbJeuxDispos-1 WHERE
+								ID IN (SELECT ID FROM FC_grp2_Paniers WHERE Mail= '" .$_SESSION["mail"] ."');";
+			mysql_query($Decremente);
+		}
+		else {
+			echo "L'horaire que vous avez entré est invalide";
+		}
+	}
 ?>
 
 </body>
