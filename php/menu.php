@@ -14,10 +14,12 @@
 
 <div>
 	<?php
+		/* Si on est connecté */
 		if(isset($_SESSION['mail'])){
         	include("./connexionbase.php");
 					error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
         	mysql_set_charset('utf8', $LienBase);
+					/* On récupére les Noms et prénoms de l'utilisateur en fonction de la personne connectée*/
         	$Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";
         	$Reponse=mysql_query($Requete);
         	$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);

@@ -11,6 +11,7 @@
 
 	<body>
 		<?php include ("./menu.php");
+		/* Si on est déjà connecté on prévient l'utilisateur et on lui propose de se déconnecter */
 		if(isset($_SESSION['mail'])):
 			echo "<h2>Vous êtes deja connecté <h2>";
 
@@ -18,12 +19,12 @@
 			<input type='submit' value='Déconnexion' name = 'Deconnexion' />
 			<br />
 			</form>";
-
+			/* Si l'utilisateur clique sur déconnexion on met fin à la session et on actualise la page*/
 			if(isset($_POST["Deconnexion"])){
 				session_unset($_SESSION['mail']);
 				header("Refresh:0");
 			};
-
+		/* Si jamais on est connecté :*/
 		else:
 		 ?>
 
@@ -31,7 +32,7 @@
 		<h2> Connexion </h2>
 		<form class="connexion" method="post" action="connexion.php">
 
-			<!--A quel heure voulez vous venir chercher votre jeux ? (horaires d'ouverture 10h-12h et 14h-18h) : <input name="heur" /><br /><br />-->
+			<!-- Formulaire de connexion -->
 			Adresse électronique : <input type="email" name="mail" /><br /><br />
 			Mot de passe : <input type="password" name="password" /><br /><br />
 			<input type="submit" value="Valider" name = "valider" />
@@ -39,43 +40,40 @@
 			<br />Pas encore inscrit ?  </a>
 		<p>
 		<?php
-
+			/* Quand l'utilisateur valide  on fait les vérifications nécessaires : mail et mdp remplis */
 			if(isset($_POST["valider"])) {
 
 				if(!empty($_POST["mail"])&&!empty($_POST["password"])) {
 					$mail = $_POST["mail"];
 					$password = $_POST["password"];
 
-					include("./../php/connexionbase.php");
+					include("./connexionbase.php");
 					if($retour) {
 
+						/* On cherche le le mot de passe correspondant à l'adresse mail entrée */
 						mysql_set_charset('utf8', $LienBase);
-						$Requete="SELECT Mail FROM FC_grp2_Users WHERE Password='" .$password ."';";
+						$Requete="SELECT * FROM FC_grp2_Users WHERE Mail='" .$mail ."';";
 						$Reponse=mysql_query($Requete);
 						$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
-
-						if (isset($_POST["valider"]) && $UsrBase['Mail']==$mail){
+						/*On compare le mot de passe avec celui entré*/
+						if (strcmp($UsrBase['Password'], $password)==0){
 									$_SESSION["mail"] = $mail;
-
-									mysql_set_charset('utf8', $LienBase);
-									$Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";
-									$Reponse=mysql_query($Requete);
-									$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
 									echo "Bonjour ".$UsrBase['Prenom']." ".$UsrBase['Nom']."<br>";
 									header("Refresh:2");
 						}
+						/* Si le mot de passe ne correspond pas avec l'adresse mail */
 						else {
-							echo"L'adresse mail et le mot de passe ne correspondent pas";
+							echo"L'adresse mail et le mot de passe ne correspondent pas <br />";
 						}
 					}
 				}
 				else echo "Toutes les cases du formulaire ne sont pas remplies <br/>";
 			}
-
-
-			echo "</p> <img src='./../image/cookies.png' /> </form>";
+			/* Affichage du fait que nous utilisons des cookies*/
+			echo "<img src='./../image/cookies.png' /> <br />
+						Pour vous permettre une expérience optimale nous utilisons des cookies</form>";
 			endif;
 		?>
 

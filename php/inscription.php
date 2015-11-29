@@ -10,6 +10,7 @@
 	<body>
 		<?php include ("./menu.php"); ?>
 		<h2> Inscriptions </h2>
+		<!-- Formulaire d'inscription -->
 		<form class="connexion" method="post" action="inscription.php">
 			Nom : <input name="nom" size="25px"/> <br /> <br />
 			Prénom : <input name="prenom" /><br /><br />
@@ -19,29 +20,33 @@
 			<input type="submit" value="Valider" name = "valider" />
 			<p>
 		<?php
-
+		<--
 		if(isset($_POST["valider"])) {
-			if(!empty($_POST["nom"])&&!empty($_POST["prenom"])&&!empty($_POST["mail"])&&!empty($_POST["password"])) {
-				$nom = $_POST["nom"];
-				$prenom = $_POST["prenom"];
-				$mail = $_POST["mail"];
-				$password = $_POST["password"];
-				$passwordconfirm = $_POST["passwordconfirm"];
-
+			/* On met ce qu'on a tapé dans des variables */
+			$nom = $_POST["nom"];
+			$prenom = $_POST["prenom"];
+			$mail = $_POST["mail"];
+			$password = $_POST["password"];
+			$passwordconfirm = $_POST["passwordconfirm"];
+			/* On vérifie que toutes les cases sont remplies */
+			if(!empty($nom) && !empty($prenom) && !empty($mail) && !empty($password) && !empty($passwordconfirm)) {
+				/* On vérifie que le mot de passe et la confirmation du mot de passe sont identiques */
 				if($password == $passwordconfirm){
 
 					include("./connexionbase.php");
 
 					if($retour) {
-
+						/* On cherche le mail dans la BdD*/
 						mysql_set_charset('utf8', $LienBase);
 						$Requete="SELECT Mail FROM FC_grp2_Users WHERE Mail='" .$mail."';";
 						$Reponse=mysql_query($Requete);
 						$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
-						if (isset($_POST["valider"]) && $UsrBase["Mail"] != NULL){
+						/* Si on a un retour on prévient que l'email est déjà utilisé */
+						if ($UsrBase){
 							echo"Cette adresse mail a déjà été utilisé";
 						}
+						/* Si non on inscrit l'utilisateur dans la BdD*/
 						else{
 							echo "Bienvenue ".$prenom." ".$nom. " !<br/>" ;
 
