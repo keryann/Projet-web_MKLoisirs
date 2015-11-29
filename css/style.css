@@ -14,10 +14,7 @@ h2 {
 	text-align : center;
 }
 
-h3 {
-
-}
-
+/* Paramètres relatifs à la présentation sur la page principale du site */
 #presentation {
 	font-size : 14px;
 	color : black;
@@ -26,11 +23,6 @@ h3 {
 	float : left;
 	margin-left: 10%;
 	width:60%;
-}
-
-#horaires {
-	width:15%;
-	margin-left: 75%;
 }
 
 table {
@@ -49,14 +41,6 @@ img.encadrephoto {
 	border-color : #000000;
 	background-color : #000000;
 
-}
-
-form.connexion {
-	margin-left : 30%;
-}
-
-#connecte {
-	margin-left : 3%;
 }
 
 /****************************** Menu ********************************/
@@ -96,7 +80,7 @@ form.connexion {
 }
 
 /*************************** Positionnement **************************/
-
+/* Permet les positionnements des recherches et afffichages des résulats (jeux) */
 #search {
 	float:left;
   width:120px;
@@ -107,6 +91,7 @@ form.connexion {
 		margin-left: 125px;
 }
 
+/* Permet les positionnements gauche et droits des boutons dans commandes.php */
 #gauche {
 	margin-left: 1%;
 	float:left;
@@ -114,4 +99,20 @@ form.connexion {
 
 #droite {
 	margin-left: 15%;
+}
+
+/* Positionne la partie formulaire connexion et inscription dans les différentes pages */
+form.connexion {
+	margin-left : 30%;
+}
+
+/* Positionne le texte précisant si on est connecté ou non en haut à gauche de la page */
+#connecte {
+	margin-left : 3%;
+}
+
+/* Paramètre relatifs au placement des horaires sur la page principale */
+#horaires {
+	width:15%;
+	margin-left: 75%;
 }

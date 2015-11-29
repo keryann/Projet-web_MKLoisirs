@@ -12,7 +12,7 @@
 <body>
 	<?php include ("./menu.php");	?>
 
-<!-- Partie recherche de jeux -->
+<!-- Partie formulaire pour la recherche de jeux -->
 	<div id="search">
 		<form method="post" action ="jeux.php">
 			<br /><br /><h3>Recherche :</h3><br />
@@ -43,7 +43,7 @@
 				$t_age=array();
 				$cond_age="0";
 				$sep=",";
-
+				/* Si on arrive sur la page a partir du menu on a init à 1 donc on affiche tout les jeux */
 				if (isset($_GET["init"])) {
 					$cond_age="4,8,12";
 				}
@@ -95,16 +95,19 @@
 									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/>
 									<li> Il y a " .$dispo ." jeux disponibles sur les " .$res['NbJeux']
 									." jeux de la ludothèque. </li><br /></ul>";
-
+									/* On propose un bouton ajouter au panier */
 									echo "<form method='post' action='jeux.php?init=1'>
 										<input type='submit' value='Ajouter au panier' name='$id'/>
 									</form>";
 
+									/* Traitement du bouton ajouter au panier*/
 									if(isset($_POST["$id"])){
+										/* On vérifie que l'utilisateur est connecté */
 										if(!isset($_SESSION['mail'])) {
 											echo "Vous devez être connecté pour commander un jeu";
 										}
 										else {
+											/* On regarde le nombre d'articles dnas le panier */
 											$compte="SELECT COUNT(*) AS nbre FROM FC_grp2_Paniers WHERE Mail ='" .$_SESSION['mail'] ."';";
 											$rep=mysql_query($compte);
 											$nbre=mysql_fetch_array($rep, MYSQL_ASSOC);
@@ -139,6 +142,7 @@
 											}
 										}
 									}
+									/* Image relative au jeu */
 									echo "</td>
 									<td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' /> </td>
 									</tr>";
@@ -148,5 +152,4 @@
 		}
 		?>
 	</div>
-
 </body>

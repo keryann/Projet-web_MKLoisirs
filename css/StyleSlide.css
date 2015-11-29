@@ -1,11 +1,11 @@
 /*
 ** Le but de ce css est uniquement la mise en page du diaporama
 ** Source : http://www.creativejuiz.fr/blog/tutoriels/css3-creer-slideshow-automatique-controlable-transition
-** Le code a �t� en grande partie r�cup�r� puis adapt� pour notre site web.
+** Le code a été en grande partie récupéré puis adapté pour notre site web.
 */
 
 /*
-** Positionemnt, dimensonnement, d�coration des diff�rents blocs
+** Positionemnt, dimensonnement, décoration des différents blocs
 */
 
 #slideshow {
@@ -51,7 +51,7 @@
 			transform: rotate(4deg);
 }
 
-/* gestion des dimensions et d�bordement du conteneur */
+/* gestion des dimensions et débordement du conteneur */
 #slideshow .container {
 	position:relative;
 	width: 640px;
@@ -59,7 +59,7 @@
 	overflow: hidden;
 }
 
-/* on pr�voit un petit espace gris pour la timeline */
+/* on prévoit un petit espace gris pour la timeline */
 #slideshow .container:after {
 	position:absolute;
 	bottom: 0; left:0;
@@ -95,7 +95,7 @@
 	box-shadow: 0 0 65px rgba(0,0,0, 0.5) inset;
 }
 
-/* styles de nos l�gendes */
+/* styles de nos légendes */
 #slideshow figcaption {
 	position:absolute;
 	left:0; right:0; bottom: 5px;
@@ -140,7 +140,7 @@
 	-webkit-animation: slider 32s infinite;
 }
 
-/*Style de la ligne de temps situ�e en bas du diapo*/
+/*Style de la ligne de temps située en bas du diapo*/
 #timeline {
 	position: absolute;
 	background: #999;
@@ -155,7 +155,7 @@
 			animation: timeliner 32s infinite;
 }
 
-/*On donne a la ligne d'animation les moments auquels elle doit �tre � son maximum et � son minimum*/
+/*On donne a la ligne d'animation les moments auquels elle doit être à son maximum et à son minimum*/
 @-webkit-keyframes timeliner {
 	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
 	20%, 45%, 70%, 90%		{ width: 640px;	}
@@ -175,9 +175,9 @@
 	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
 }
 
-/* ajouter � l'�l�ment : */
+/* ajouter à l'élément : */
 #slideshow figcaption {
-	/* ... la propri�t� animation */
+	/* ... la propriété animation */
 	-webkit-animation: figcaptionner 32s infinite;
 			animation: figcaptionner 32s infinite;
 }
