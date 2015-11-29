@@ -29,7 +29,7 @@
 				<div class="c_slider"></div>
 				<div class="slider"> <!-- Partie glissante -->
 					<!-- Selection des images de manière dynamique -->
-					<?php include("connexionbase.php");
+					<?php
 						if($retour) {
 							mysql_set_charset('utf8', $LienBase);
 

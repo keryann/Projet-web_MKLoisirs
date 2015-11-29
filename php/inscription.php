@@ -32,8 +32,6 @@
 				/* On vérifie que le mot de passe et la confirmation du mot de passe sont identiques */
 				if($password == $passwordconfirm){
 
-					include("./connexionbase.php");
-
 					if($retour) {
 						/* On cherche le mail dans la BdD*/
 						mysql_set_charset('utf8', $LienBase);

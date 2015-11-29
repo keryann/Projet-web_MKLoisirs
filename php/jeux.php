@@ -37,7 +37,7 @@
 
 	<!-- Affichage des jeux -->
 	<div id="games">
-		<?php include("connexionbase.php");
+		<?php
 			if($retour) {
 				mysql_set_charset('utf8', $LienBase);
 				/* Récupération de la recherche age*/

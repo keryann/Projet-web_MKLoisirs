@@ -16,7 +16,7 @@
 	<?php
 		/* Si on est connecté */
 		if(isset($_SESSION['mail'])){
-        	include("./connexionbase.php");
+        	include("./connexionbase.php"); //En se connectant ici on a donc plus besoin de l'inclure dans les pages où le menu est inclus
 					error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
         	mysql_set_charset('utf8', $LienBase);
 					/* On récupére les Noms et prénoms de l'utilisateur en fonction de la personne connectée*/
