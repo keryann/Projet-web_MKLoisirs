@@ -34,22 +34,19 @@
 							mysql_set_charset('utf8', $LienBase);
 
 							// Recherche du Nombre de jeux présent dans la base
-							$Requete="SELECT COUNT(Jeux) AS nombre FROM FC_grp2_Jeux;";
+							$Requete="SELECT * FROM fc_grp2_jeux ORDER BY ID DESC LIMIT 4;";
 							$Reponse=mysql_query($Requete);
-							$N=mysql_fetch_array($Reponse, MYSQL_ASSOC);
+							$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
 							// Boucle pour l'affichage du code
-							for($i=$N['nombre'];$i>=$N['nombre']-4;$i--) {
-								$Requete="SELECT Jeux, image FROM FC_grp2_Jeux WHERE ID=" .$i .";";
-								$Reponse=mysql_query($Requete);
-								$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
-
+							while($res!=NULL) {
 								echo "<figure>
 
 								<img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' width='640' height='310' />
 								<figcaption>" .$res['Jeux'] ."</figcaption>
 
-								</figure>\n";
+								</figure>";
+								$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 							}
 						}
 					?>

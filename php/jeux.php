@@ -12,7 +12,6 @@
 
 <body>
 	<?php include ("./menu.php");	?>
-
 <!-- Partie formulaire pour la recherche de jeux -->
 	<div id="search">
 		<form method="post" action ="jeux.php">
