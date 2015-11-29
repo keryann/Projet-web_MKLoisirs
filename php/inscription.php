@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -12,15 +12,14 @@
 		<h2> Inscriptions </h2>
 		<!-- Formulaire d'inscription -->
 		<form class="connexion" method="post" action="inscription.php">
-			Nom : <input name="nom" size="25px"/> <br /> <br />
+			Nom : <input name="nom" /> <br /> <br />
 			Prénom : <input name="prenom" /><br /><br />
 			Adresse électronique : <input type="email" name="mail" /><br /><br />
 			Mot de passe : <input type="password" name="password" /><br /><br />
 			Confirmation du Mot de Passe : <input type="password" name="passwordconfirm" /><br /><br />
-			<input type="submit" value="Valider" name = "valider" />
-			<p>
+			<input type="submit" value="Valider" name = "valider" /><br /><br />
 		<?php
-		<--
+
 		if(isset($_POST["valider"])) {
 			/* On met ce qu'on a tapé dans des variables */
 			$nom = $_POST["nom"];
@@ -61,6 +60,5 @@
 		}
 		?>
 	</form>
-		</p>
 	</body>
 </html>

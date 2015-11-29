@@ -13,9 +13,9 @@
 		<?php include ("./menu.php");
 		/* Si on est déjà connecté on prévient l'utilisateur et on lui propose de se déconnecter */
 		if(isset($_SESSION['mail'])):
-			echo "<h2>Vous êtes deja connecté <h2>";
+			echo "<h2>Vous êtes deja connecté </h2>";
 
-			echo "<form method='post' action='connexion.php'>
+			echo "<form id='deco' method='post' action='connexion.php'>
 			<input type='submit' value='Déconnexion' name = 'Deconnexion' />
 			<br />
 			</form>";
@@ -72,7 +72,7 @@
 				else echo "Toutes les cases du formulaire ne sont pas remplies <br/>";
 			}
 			/* Affichage du fait que nous utilisons des cookies*/
-			echo "<img src='./../image/cookies.png' /> <br />
+			echo "<img src='./../image/cookies.png' alt='cookies'/> <br />
 						Pour vous permettre une expérience optimale nous utilisons des cookies</form>";
 			endif;
 		?>

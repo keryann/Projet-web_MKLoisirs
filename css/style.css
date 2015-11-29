@@ -43,6 +43,11 @@ img.encadrephoto {
 
 }
 
+/* Permet un espace entre les <li> sans erreur w3c */
+li.space {
+  padding-top : 25px;
+}
+
 /****************************** Menu ********************************/
 
 #navigation {
@@ -87,7 +92,7 @@ img.encadrephoto {
 }
 
 #games {
-    /*overflow:auto;*/
+    float : none;
 		margin-left: 125px;
 }
 
@@ -115,4 +120,8 @@ form.connexion {
 #horaires {
 	width:15%;
 	margin-left: 75%;
+}
+
+#deco {
+	text-align: center;
 }

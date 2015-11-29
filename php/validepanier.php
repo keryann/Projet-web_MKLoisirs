@@ -1,5 +1,6 @@
 <?php session_start(); ?>
-
+<!DOCTYPE html>
+<html>
 <head> <!-- -->
 
 	<meta charset="UTF-8">
@@ -13,7 +14,10 @@
 	/* On demande à l'utilisateur l'horaire auquel il souhaite venier chercher sa commande */
 	echo"<form class='connexion' method='post' action ='validepanier.php'>
 				Entrez l'horaire auquel vous souhaitez venir chercher votre/vos jeux : <input name='horaire'>
-				<input type='submit' value='valider' name='valide'/>";
+				<input type='submit' value='valider' name='valide'/>
+				<p id='horaires'> <br /><b>Nos horaires :</b> <br />
+				10h - 12h <br />
+				14h - 18h</p>";
 
 	if(isset($_POST["valide"])) {
 		$horaire=$_POST["horaire"];
@@ -35,3 +39,4 @@
 ?>
 	</form>
 </body>
+</html>

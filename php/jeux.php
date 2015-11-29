@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 
-<!-- http://www.lephpfacile.com/cours/17-les-cookies  .$_COOKIE['pseudo'].-->
+<!DOCTYPE html>
+<html>
 <head> <!-- -->
 
 	<meta charset="UTF-8">
@@ -89,12 +90,12 @@
 					$id=$res['ID'];
 					$dispo=$res['NbJeuxDispos'];
 					echo"	<tr>	<td>
-								<ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
-									<li>" .$res['Ages'] ." ans et plus\n" ."</li><br/>
-									<li>" .$res['TypeJeux'] ."\n" ."</li> <br/>
-									<li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br/>
-									<li> Il y a " .$dispo ." jeux disponibles sur les " .$res['NbJeux']
-									." jeux de la ludothèque. </li><br /></ul>";
+								<ul>	<li class='space'>" .$res['Jeux'] ."\n" ."</li>
+									<li class='space'>" .$res['Ages'] ." ans et plus\n" ."</li>
+									<li class='space'>" .$res['TypeJeux'] ."\n" ."</li>
+									<li class='space'> Jeux d'" .$res['Lieu'] ."\n" ."</li>
+									<li class='space'> Il y a " .$dispo ." jeux disponibles sur les " .$res['NbJeux']
+									." jeux de la ludothèque. </li> </ul>";
 									/* On propose un bouton ajouter au panier */
 									echo "<form method='post' action='jeux.php?init=1'>
 										<input type='submit' value='Ajouter au panier' name='$id'/>
@@ -153,3 +154,4 @@
 		?>
 	</div>
 </body>
+</html>

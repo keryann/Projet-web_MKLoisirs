@@ -1,5 +1,6 @@
 <?php session_start(); ?>
-
+<!DOCTYPE html>
+<html>
 <head> <!-- -->
 
 		<meta charset="UTF-8">
@@ -43,12 +44,12 @@
 								$Reponse=mysql_query($Requete);
 								$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
-								echo "<figure>";
+								echo "<figure>
 
-								echo "<img src='./../image/" .$res['image'] ."'alt='" .$res['Jeux'] ."' width='640' height='310' />";
-								echo "<figcaption>" .$res['Jeux'] ."</figcaption>";
+								<img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' width='640' height='310' />
+								<figcaption>" .$res['Jeux'] ."</figcaption>
 
-								echo "</figure>";
+								</figure>\n";
 							}
 						}
 					?>
@@ -58,3 +59,4 @@
 			<span id="timeline"></span> <!-- Barre de défilement du temps -->
 		</section>
 	</body>
+</html>

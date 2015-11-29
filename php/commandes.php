@@ -1,5 +1,6 @@
 <?php session_start(); ?>
-
+<!DOCTYPE html>
+<html>
 <head> <!-- -->
 
 	<meta charset="UTF-8">
@@ -29,12 +30,12 @@
             $id=$res['ID'];
             // On affiche tout les jeux présents dans le panier
             echo"	<tr>	<td>
-                <ul>	<li>" .$res['Jeux'] ."\n" ."</li><br/>
-                  <li>" .$res['Ages'] ." ans et plus\n" ."</li><br />
-                  <li>" .$res['TypeJeux'] ."\n" ."</li> <br />
-                  <li> Jeux d'" .$res['Lieu'] ."\n" ."</li> <br />
-                  <li> Il y a " .$res['NbJeuxDispos'] ." jeux disponibles sur les " .$res['NbJeux']
-                  ." jeux de la ludothèque. </li><br /></ul>";
+                <ul>	<li class='space'>" .$res['Jeux'] ."\n" ."</li>
+                  <li class='space'>" .$res['Ages'] ." ans et plus\n" ."</li>
+                  <li class='space'>" .$res['TypeJeux'] ."\n" ."</li>
+                  <li class='space'> Jeux d'" .$res['Lieu'] ."\n" ."</li>
+                  <li class='space'> Il y a " .$res['NbJeuxDispos'] ." jeux disponibles sur les " .$res['NbJeux']
+                  ." jeux de la ludothèque. </li></ul>";
 
                   echo "</td>
                   <td> <img src='./../image/" .$res['image'] ."' alt='" .$res['Jeux'] ."' /> </td>
@@ -71,3 +72,4 @@
         ?>
     </div>
 </body>
+</html>
