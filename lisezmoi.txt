@@ -1,1 +1,6 @@
+Membres du groupe :
+- Keryann Bussereau
+- Murdo Nicolai
+
+Adresse du site :
 http://info.univ-lemans.fr/~spi2097/Projet-web_MKLoisirs/php/index.php

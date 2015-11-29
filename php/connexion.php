@@ -58,7 +58,7 @@
 						if (strcmp($UsrBase['Password'], $password)==0){
 									$_SESSION['mail'] = $mail;
 
-									echo "Bonjour ".$UsrBase['Prenom']." ".$UsrBase['Nom']."<br>";
+									echo "Bonjour ".$UsrBase['Prenom']." ".$UsrBase['Nom']."<br /><br />";
 						}
 						/* Si le mot de passe ne correspond pas avec l'adresse mail */
 						else {
