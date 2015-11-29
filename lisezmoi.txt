@@ -4,3 +4,6 @@ Membres du groupe :
 
 Adresse du site :
 http://info.univ-lemans.fr/~spi2097/Projet-web_MKLoisirs/php/index.php
+
+github du projet :
+https://github.com/keryann/Projet-web_MKLoisirs
