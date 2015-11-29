@@ -1,6 +1,4 @@
-<?php session_start(); ?>
-
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -13,7 +11,7 @@
 		<?php include ("./menu.php");
 		/* Si on est déjà connecté on prévient l'utilisateur et on lui propose de se déconnecter */
 		if(isset($_SESSION['mail'])):
-			echo "<h2>Vous êtes deja connecté </h2>";
+			echo "<h2>Vous êtes déjà connecté </h2>";
 
 			echo "<form id='deco' method='post' action='connexion.php'>
 			<input type='submit' value='Déconnexion' name = 'Deconnexion' />
@@ -58,10 +56,9 @@
 
 						/*On compare le mot de passe avec celui entré*/
 						if (strcmp($UsrBase['Password'], $password)==0){
-									$_SESSION["mail"] = $mail;
+									$_SESSION['mail'] = $mail;
 
 									echo "Bonjour ".$UsrBase['Prenom']." ".$UsrBase['Nom']."<br>";
-									header("Refresh:2");
 						}
 						/* Si le mot de passe ne correspond pas avec l'adresse mail */
 						else {
@@ -76,6 +73,7 @@
 						Pour vous permettre une expérience optimale nous utilisons des cookies</form>";
 			endif;
 		?>
+
 
 
 	</body>
