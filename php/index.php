@@ -16,7 +16,7 @@
 		qualité que vous pouvez emprunter sur réservation. Nous vous proposons des jeux
 		de société, des jeux vidéos, des jeux d'extérieurs et pleins d'autre choses. Nous sommes
 		à votre disposition pour toutes les informations qui vous semblent nécessaires. Vous ne
-		pouvez reserver qu'un maximum de trois jeux par commande et vous ne pouvez avori qu'une
+		pouvez reserver qu'un maximum de trois jeux par commande et vous ne pouvez avoir qu'une
 		commande à la fois. </p><br />
 
 		<p id="horaires"> <br /><b>Nos horaires :</b> <br />
