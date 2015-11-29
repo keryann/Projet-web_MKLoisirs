@@ -52,7 +52,7 @@ img.encadrephoto {
 }
 
 form.connexion {
-	margin-left : 40%;
+	margin-left : 30%;
 }
 
 #connecte {
@@ -105,4 +105,13 @@ form.connexion {
 #games {
     /*overflow:auto;*/
 		margin-left: 125px;
+}
+
+#gauche {
+	margin-left: 1%;
+	float:left;
+}
+
+#droite {
+	margin-left: 15%;
 }

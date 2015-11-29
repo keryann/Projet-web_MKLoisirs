@@ -28,7 +28,7 @@
 
 			Disponible uniquement : <br />
 			<input type="radio" name="dispo" value=">0" /> Oui<br/>
-			<input type="radio" name="dispo" value=">=0" checked="checked" /> non<br/>
+			<input type="radio" name="dispo" value=">=0" checked="checked" /> Non<br/>
 
 			<input type="submit" value="Valider" name="valider"/>
 		</form>
@@ -109,9 +109,15 @@
 											$rep=mysql_query($compte);
 											$nbre=mysql_fetch_array($rep, MYSQL_ASSOC);
 
-											$present="SELECT ID FROM FC_grp2_Paniers WHERE ID = '" .$id ."';";
+											/*On regarde les ID présent dans le panier pour savoir si ils sont déjà dans le panier*/
+											$present="SELECT ID FROM FC_grp2_Paniers WHERE ID = '" .$id ."' AND Valide=0;";
 											$pres=mysql_query($present);
 											$pre=mysql_fetch_array($pres, MYSQL_ASSOC);
+
+											/*On vérifie si on a une commande en cours*/
+											$commande="SELECT COUNT(*) AS nbre FROM FC_grp2_Paniers WHERE Mail ='" .$_SESSION['mail'] ."' AND Valide=1;";
+											$comm=mysql_query($commande);
+											$co=mysql_fetch_array($comm, MYSQL_ASSOC);
 
 											if($nbre['nbre']>=3) {
 												echo "Vous avez atteint la limite du nombre de jeux pouvants êtres commandés <br />";
@@ -122,10 +128,14 @@
 											elseif($dispo == 0) {
 												echo "Ce jeu n'est pas disponible";
 											}
+											elseif($co['nbre']>0){
+												echo "Vous avez déjà une commande en cours";
+											}
 											else {
 												$Insertion= "INSERT INTO FC_grp2_Paniers (ID,Mail,Creneau)
 																		VALUES ('".$id."','".$_SESSION['mail']."','0');";
 												mysql_query($Insertion);
+												echo "L'article a bien été ajouté au panier";
 											}
 										}
 									}

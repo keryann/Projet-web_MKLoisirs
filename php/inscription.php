@@ -17,7 +17,6 @@
 			Mot de passe : <input type="password" name="password" /><br /><br />
 			Confirmation du Mot de Passe : <input type="password" name="passwordconfirm" /><br /><br />
 			<input type="submit" value="Valider" name = "valider" />
-			</form>
 			<p>
 		<?php
 
@@ -31,7 +30,7 @@
 
 				if($password == $passwordconfirm){
 
-					include("./../php/connexionbase.php");
+					include("./connexionbase.php");
 
 					if($retour) {
 
@@ -41,26 +40,22 @@
 						$UsrBase=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 
 						if (isset($_POST["valider"]) && $UsrBase["Mail"] != NULL){
-							echo"cette adresse mail à deja été utilisé";
+							echo"Cette adresse mail a déjà été utilisé";
 						}
 						else{
-							echo "Bienvenu ".$prenom." ".$nom. " !<br/>" ;
+							echo "Bienvenue ".$prenom." ".$nom. " !<br/>" ;
 
 							$sql="INSERT INTO FC_grp2_Users VALUES('".$nom."','".$prenom."','".$mail."','".$password."');";
 							mysql_query($sql);
 						}
-
 					}
-
-
 				}
-
 				else echo "La confirmation du mot de passe ne correspond pas au mot de passe";
 			}
-
 			else echo "Toutes les cases du formulaire ne sont pas remplies";
 		}
 		?>
+	</form>
 		</p>
 	</body>
 </html>

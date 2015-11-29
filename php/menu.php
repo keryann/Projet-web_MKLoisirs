@@ -6,6 +6,7 @@
 		<li><a href='./index.php' title='Accueil'>Accueil</a> </li>
 		<li><a href='./jeux.php?init=1' title='Les jeux'>Les jeux</a></li>
 		<li><a href='./panier.php' title='Mon panier'>Mon Panier</a> </li>
+		<li><a href='./commandes.php' title='Mes commandes'>Mes commandes</a> </li>
 		<li><a href='./connexion.php' title='connexion'>Connexion</a> </li>
 	</ul>
 	</div>
@@ -14,7 +15,7 @@
 <div>
 	<?php
 		if(isset($_SESSION['mail'])){
-        	include("./../php/connexionbase.php");
+        	include("./connexionbase.php");
 					error_reporting(E_ALL ^ E_DEPRECATED); //Pour palier aux erreurs provoqués par l'utilisation de wamp
         	mysql_set_charset('utf8', $LienBase);
         	$Requete="SELECT Nom,Prenom FROM FC_grp2_Users WHERE Mail='" .$_SESSION["mail"]."';";

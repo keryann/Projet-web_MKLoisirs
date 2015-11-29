@@ -36,7 +36,7 @@
 			Mot de passe : <input type="password" name="password" /><br /><br />
 			<input type="submit" value="Valider" name = "valider" />
 			<a href="./inscription.php" > <br />
-			<br />pas encore inscrit ?  </a>
+			<br />Pas encore inscrit ?  </a>
 		<p>
 		<?php
 

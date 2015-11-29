@@ -11,11 +11,9 @@
   <body>
 	<?php include ("./menu.php");?>
 		<div> <?php
-				$User;
-				include("connexionbase.php");
-				if($retour && isset($_SESSION['mail'])) {
+				if(isset($_SESSION['mail']) && $retour) {
 					mysql_set_charset('utf8', $LienBase);
-					/*Requete SQL en fonction de la recherche*/
+					/*Requete SQL pour l'affichage de tout le panier*/
 					$Requete="SELECT * FROM ((FC_grp2_Jeux NATURAL JOIN FC_grp2_JeuxLudotheque) NATURAL JOIN FC_grp2_Paniers)
 										NATURAL JOIN FC_grp2_Users WHERE Mail='" .$_SESSION["mail"] ."' AND Valide=0;";
 					$Reponse=mysql_query($Requete);
@@ -37,7 +35,7 @@
 										<li> Il y a " .$res['NbJeuxDispos'] ." jeux disponibles sur les " .$res['NbJeux']
 										." jeux de la ludothèque. </li><br /></ul>
 										<form method='post' action ='panier.php'>
-											<input type='submit' value='supprimer du panier' name='$id'/>
+											<input type='submit' value='Supprimer du panier' name='$id'/>
 										</form>";
 										if(isset($_POST["$id"])){
 											$Suppression="DELETE * FROM FC_grp2_Paniers WHERE ID='" .$id ."' AND Mail= '" .$_SESSION["mail"] ."';";
@@ -52,7 +50,7 @@
 						}
 						echo "</table><br />
 
-						<form method='post' action ='panier.php'>
+						<form id='gauche' method='post' action ='panier.php'>
 							<input type='submit' value='Vider le panier' name='vider'/>
 						</form>";
 
@@ -61,8 +59,8 @@
 							mysql_query($Suppression);
 							header("Refresh:0");
 						}
-						echo"<form method='post' action ='validepanier.php'>
-									<input type='submit' value='valider panier' name='valider'/>
+						echo"<form id='droite' method='post' action ='validepanier.php'>
+									<input type='submit' value='Valider panier' name='valider'/>
 								</form>";
 					}
 				}
