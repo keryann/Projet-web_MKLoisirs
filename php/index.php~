@@ -36,7 +36,7 @@
 							mysql_set_charset('utf8', $LienBase);
 
 							// Recherche du Nombre de jeux présent dans la base
-							$Requete="SELECT * FROM FC_grp2_Jeux ORDER BY ID DESC LIMIT 4;";
+							$Requete="SELECT * FROM FC_grp2_jeux ORDER BY ID DESC LIMIT 4;";
 							$Reponse=mysql_query($Requete);
 							$res=mysql_fetch_array($Reponse, MYSQL_ASSOC);
 

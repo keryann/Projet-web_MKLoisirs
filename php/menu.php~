@@ -14,6 +14,7 @@
 
 <div>
 	<?php
+	session_start();
 		include("./connexionbase.php"); //En se connectant ici on a donc plus besoin de l'inclure dans les pages où le menu est inclus
 		/* Si on est connecté */
 		if(isset($_SESSION['mail'])){
