@@ -42,7 +42,7 @@
 										</form>";
 										/* Si l'utilisateur clique sur le bouton on enlève de la table panier */
 										if(isset($_POST["$id"])){
-											$Suppression="DELETE * FROM FC_grp2_Paniers WHERE ID='" .$id ."' AND Mail= '" .$_SESSION["mail"] ."';";
+											$Suppression="DELETE FROM FC_grp2_Paniers WHERE ID='" .$id ."' AND Mail= '" .$_SESSION['mail'] ."';";
 											mysql_query($Suppression);
 											header("Refresh:0");
 										}

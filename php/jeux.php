@@ -26,8 +26,8 @@
 			<input type="checkbox" name="lieu[]" value="exterieur" checked="checked" /> Extérieur<br/><br />
 
 			Disponible uniquement : <br />
-			<input type="radio" name="dispo" value=">0" /> Oui<br/>
-			<input type="radio" name="dispo" value=">=0" checked="checked" /> Non<br/>
+			<input type="radio" name="dispo" value="oui" /> Oui<br/>
+			<input type="radio" name="dispo" value="non" checked="checked" /> Non<br/>
 
 			<input type="submit" value="Valider" name="valider"/>
 		</form>
@@ -71,7 +71,7 @@
 				}
 
 				/* Récupération de la recherche disponiblité*/
-				if (isset($_GET["init"]) || strcmp($_POST["dispo"],"oui") == 1) {
+				if (isset($_GET["init"]) || strcmp($_POST["dispo"],"non") == 0) {
 					$cond_dispo='NbJeuxDispos>=0';
 				}
 				else {
